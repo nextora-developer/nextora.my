@@ -57,7 +57,7 @@ class PageController extends Controller
     {
         $whatsapp = [
             'phone' => '60123011610', // ✅ 换你的号码
-            'text'  => 'Hi! I want to get ACCA course details (Edufluence x BR Innovate Future).',
+            'text'  => 'Hi! I want to get ACCA course details (Edufluence x Nextora).',
         ];
 
         $courses = [

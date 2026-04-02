@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         // Admin user
         $admin = User::updateOrCreate(
-            ['email' => 'admin@brif.my'],
+            ['email' => 'admin@admin.com'],
             [
                 'name'     => 'Admin',
-                'password' => Hash::make('brif12345'),
+                'password' => Hash::make('password'),
                 'is_admin' => true,
             ]
         );

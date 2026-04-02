@@ -115,22 +115,35 @@
                 {{-- Center: Brand (big) + tagline --}}
                 <div class="flex-1 flex flex-col items-center justify-center text-center">
                     <a href="{{ route('home') }}" class="group">
-                        {{-- <div class="flex items-center gap-3 justify-center"> <img src="{{ asset('images/logo.png') }}"
-                                alt="BRIF"
-                                class="h-9 w-9 rounded-2xl object-cover opacity-90 group-hover:opacity-100 transition" />
-                            <span class="text-3xl font-black tracking-[0.12em] text-[#D4AF37] drop-shadow-sm"> BRIF.MY
-                            </span> </div> --}}
-
-                        <div class="flex items-center justify-center">
-                            <img src="{{ asset('images/logo-full.png') }}" alt="BRIF"
-                                class="h-10 lg:h-16 object-contain opacity-90 hover:opacity-100 transition" />
+                        <div class="flex flex-col items-center leading-none">
+                            <span style="font-family: 'Cinzel', serif;"
+                                class="text-[42px] lg:text-[64px] font-bold tracking-[0.06em]
+                       text-transparent bg-clip-text
+                       bg-gradient-to-b from-[#E7C76A] via-[#D4AF37] to-[#9C7414]
+                       uppercase">
+                                NEXTORA
+                        </span>
                         </div>
-
-                        {{-- <div class="mt-1 text-[11px] uppercase tracking-[0.35em] text-gray-400">
-                            Premium Essentials, Curated for You
-                        </div> --}}
                     </a>
                 </div>
+
+                {{-- <div class="flex-1 flex flex-col items-center justify-center text-center">
+                    <a href="{{ route('home') }}" class="group">
+                        <div class="flex items-center gap-4">
+                            <div>
+                                <img src="{{ asset('images/nextora-logo.png') }}" class="h-16 w-16 object-contain"
+                                    onerror="this.style.display='none'">
+                            </div>
+                            <span style="font-family: 'Cinzel', serif;"
+                                class="text-[42px] lg:text-[64px] font-bold tracking-[0.06em]
+                       text-transparent bg-clip-text
+                       bg-gradient-to-b from-[#E7C76A] via-[#D4AF37] to-[#9C7414]
+                       uppercase">
+                                NEXTORA
+                            </span>
+                        </div>
+                    </a>
+                </div> --}}
 
                 {{-- Right: Cart | User (保持你原本风格) --}}
                 <div class="flex items-center gap-3">
@@ -278,10 +291,10 @@
                         SHOP
                     </a>
 
-                    <a href="https://brif.cloud/" target="_blank" rel="noopener noreferrer"
+                    {{-- <a href="https://brif.cloud/" target="_blank" rel="noopener noreferrer"
                         class="{{ $linkBase }} {{ $linkInactive }}">
                         OFFICIAL SITE
-                    </a>
+                    </a> --}}
 
                     {{-- <a href="{{ route('reward-point') }}"
                         class="{{ $linkBase }} {{ request()->routeIs('reward-point') ? $linkActive : $linkInactive }}">
@@ -330,10 +343,10 @@
                                     ACCA Courses
                                 </a> --}}
 
-                                <a href="{{ route('games.spin') }}"
+                                {{-- <a href="{{ route('games.spin') }}"
                                     class="{{ $linkBase }} {{ request()->routeIs('games.spin') || request()->routeIs('games.spin.*') ? $linkActive : $linkIdle }}">
                                     Spin Game
-                                </a>
+                                </a> --}}
 
                                 {{-- <a href="{{ route('revenue.monster') }}"
                                     class="{{ $linkBase }} {{ request()->routeIs('revenue.monster') ? $linkActive : $linkIdle }}">
@@ -377,10 +390,10 @@
                                     FAQ
                                 </a>
 
-                                <a href="{{ route('agents.index') }}"
+                                {{-- <a href="{{ route('agents.index') }}"
                                     class="{{ $linkBase }} {{ request()->routeIs('agents.*') ? $linkActive : $linkIdle }}">
                                     Verify Agent
-                                </a>
+                                </a> --}}
 
                             </div>
                         </div>
@@ -570,14 +583,13 @@
                                     'M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z',
                             ],
 
-                            
                             // [
                             //     'route' => 'revenue.monster',
                             //     'label' => 'RM',
                             //     'icon' =>
                             //         'M21 12a2.25 2.25 0 0 0-2.25-2.25H15a3 3 0 1 1-6 0H5.25A2.25 2.25 0 0 0 3 12m18 0v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 9m18 0V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v3',
                             // ],
-                            
+
                             [
                                 'route' => 'guideline',
                                 'label' => 'Guideline',
@@ -590,7 +602,6 @@
                                 'icon' =>
                                     'M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
                             ],
-
                         ];
                     @endphp
 
@@ -768,21 +779,21 @@
                                     stroke-width="1.5" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0
-                                                                                                                                                                                                                                                                   a1.724 1.724 0 002.573 1.066
-                                                                                                                                                                                                                                                                   c1.543-.94 3.31.826 2.37 2.37
-                                                                                                                                                                                                                                                                   a1.724 1.724 0 001.065 2.572
-                                                                                                                                                                                                                                                                   c1.756.426 1.756 2.924 0 3.35
-                                                                                                                                                                                                                                                                   a1.724 1.724 0 00-1.066 2.573
-                                                                                                                                                                                                                                                                   c.94 1.543-.826 3.31-2.37 2.37
-                                                                                                                                                                                                                                                                   a1.724 1.724 0 00-2.572 1.065
-                                                                                                                                                                                                                                                                   c-.426 1.756-2.924 1.756-3.35 0
-                                                                                                                                                                                                                                                                   a1.724 1.724 0 00-2.573-1.066
-                                                                                                                                                                                                                                                                   c-1.543.94-3.31-.826-2.37-2.37
-                                                                                                                                                                                                                                                                   a1.724 1.724 0 00-1.065-2.572
-                                                                                                                                                                                                                                                                   c-1.756-.426-1.756-2.924 0-3.35
-                                                                                                                                                                                                                                                                   a1.724 1.724 0 001.066-2.573
-                                                                                                                                                                                                                                                                   c-.94-1.543.826-3.31 2.37-2.37
-                                                                                                                                                                                                                                                                   a1.724 1.724 0 002.572-1.065z" />
+                                                                                                                                                                                                                                                                           a1.724 1.724 0 002.573 1.066
+                                                                                                                                                                                                                                                                           c1.543-.94 3.31.826 2.37 2.37
+                                                                                                                                                                                                                                                                           a1.724 1.724 0 001.065 2.572
+                                                                                                                                                                                                                                                                           c1.756.426 1.756 2.924 0 3.35
+                                                                                                                                                                                                                                                                           a1.724 1.724 0 00-1.066 2.573
+                                                                                                                                                                                                                                                                           c.94 1.543-.826 3.31-2.37 2.37
+                                                                                                                                                                                                                                                                           a1.724 1.724 0 00-2.572 1.065
+                                                                                                                                                                                                                                                                           c-.426 1.756-2.924 1.756-3.35 0
+                                                                                                                                                                                                                                                                           a1.724 1.724 0 00-2.573-1.066
+                                                                                                                                                                                                                                                                           c-1.543.94-3.31-.826-2.37-2.37
+                                                                                                                                                                                                                                                                           a1.724 1.724 0 00-1.065-2.572
+                                                                                                                                                                                                                                                                           c-1.756-.426-1.756-2.924 0-3.35
+                                                                                                                                                                                                                                                                           a1.724 1.724 0 001.066-2.573
+                                                                                                                                                                                                                                                                           c-.94-1.543.826-3.31 2.37-2.37
+                                                                                                                                                                                                                                                                           a1.724 1.724 0 002.572-1.065z" />
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>

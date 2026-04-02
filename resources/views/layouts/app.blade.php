@@ -19,7 +19,10 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -77,8 +80,13 @@
                                 class="text-xs text-gray-400 tracking-wide">Premium Essentials</span> </div>
                     </div> --}}
                     <div class="flex items-center mb-6">
-                        <img src="{{ asset('images/logo-full.png') }}" alt="BRIF"
-                            class="h-12 object-contain opacity-90 hover:opacity-100 transition" />
+                        <span style="font-family: 'Cinzel', serif;"
+                            class="text-[28px] lg:text-[32px] font-bold tracking-[0.06em]
+               text-transparent bg-clip-text
+               bg-gradient-to-b from-[#E7C76A] via-[#D4AF37] to-[#9C7414]
+               uppercase opacity-90 hover:opacity-100 transition">
+                            NEXTORA
+                        </span>
                     </div>
 
 
@@ -241,16 +249,16 @@
 
                     <ul class="space-y-4">
                         <li>
-                            <a href="https://www.instagram.com/brinnovatefuture?igsh=eHgzM2prcHN2MWF2"
+                            <a href="https://www.tiktok.com/@nextoraone?_r=1&_t=ZS-92KOk1nUlBh"
                                 class="text-sm text-gray-300 hover:text-white transition relative inline-block
                                   after:content-[''] after:absolute after:left-0 after:-bottom-1
                                   after:h-px after:w-0 after:bg-[#D4AF37] hover:after:w-full
                                   after:transition-all after:duration-300">
-                                Instagram
+                                Tiktok
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.facebook.com/share/17CB8CgQRN/?mibextid=wwXIfr"
+                            <a href="https://www.facebook.com/nextoraone"
                                 class="text-sm text-gray-300 hover:text-white transition relative inline-block
                                   after:content-[''] after:absolute after:left-0 after:-bottom-1
                                   after:h-px after:w-0 after:bg-[#D4AF37] hover:after:w-full
@@ -259,7 +267,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://wa.me/60123011610"
+                            <a href="https://wa.me/60182222507"
                                 class="text-sm text-gray-300 hover:text-white transition relative inline-block
                                   after:content-[''] after:absolute after:left-0 after:-bottom-1
                                   after:h-px after:w-0 after:bg-[#D4AF37] hover:after:w-full
@@ -270,7 +278,7 @@
 
                         <li class="text-sm text-gray-400">
                             <a href="mailto:cs@brinnovatefuture.com" class="hover:text-white transition">
-                                cs@brinnovatefuture.com
+                                nextoraone@gmail.com
                             </a>
                         </li>
                     </ul>
@@ -282,7 +290,7 @@
             <div
                 class="mt-10 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-center items-center gap-4">
                 <p class="text-base text-gray-400 font-medium">
-                    © {{ date('Y') }} BR Innovate Future. All rights reserved.
+                    © {{ date('Y') }} Nextora. All rights reserved.
                 </p>
             </div>
 
@@ -303,7 +311,7 @@
         </svg>
     </button>
 
-    <a href="https://wa.me/60123011610" target="_blank"
+    <a href="https://wa.me/60182222507" target="_blank"
         class="hidden lg:flex
           fixed right-4 bottom-4 z-50
           w-12 h-12 rounded-full

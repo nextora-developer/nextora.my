@@ -390,7 +390,7 @@
         <div style="margin-top: 60px; text-align: center; border-top: 1px solid #eee; padding-top: 20px;">
             <p class="muted" style="font-size: 9px; letter-spacing: 1px; text-transform: uppercase;">
                 This is a computer-generated document. <br>
-                Power by BR Innovate Future Sdn. Bhd.
+                Power by Nextora
             </p>
         </div>
     </div>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Admin Panel | BRIF.MY</title>
+    <title>Admin Panel | Nextora</title>
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -70,13 +70,15 @@
             {{-- Brand Section --}}
             <div class="h-20 flex items-center px-6 border-b border-gray-50">
                 <div class="flex items-center gap-3 overflow-hidden">
-                    <div
-                        class="h-9 w-9 bg-[#D4AF37] rounded-lg flex shrink-0 items-center justify-center text-white shadow-lg shadow-[#D4AF37]/20">
-                        <span class="font-bold text-xl">BR</span>
+                    <div class="h-9 w-9 rounded-lg overflow-hidden shrink-0 shadow-lg shadow-[#D4AF37]/20">
+                        <img src="{{ asset('images/nextora-logo.png') }}" alt="Logo"
+                            class="w-full h-full object-cover" onerror="this.style.display='none'">
                     </div>
                     <div x-show="!collapsed" x-transition.opacity class="whitespace-nowrap">
-                        <span class="font-bold text-gray-800 tracking-tight">INNOVATE<span class="text-[#D4AF37]">
-                                FUTURE</span></span>
+                        <span style="font-family: 'Cinzel', serif;"
+                            class="text-2xl font-bold tracking-[0.06em] text-[#D4AF37] uppercase">
+                            NEXTORA
+                        </span>
                     </div>
                 </div>
             </div>
@@ -474,7 +476,7 @@
 
             {{-- Footer --}}
             <footer class="mt-auto p-8 text-center text-gray-400 text-xs">
-                &copy; {{ date('Y') }} BR INNOVATE FUTURE Admin Portal. All rights reserved.
+                &copy; {{ date('Y') }} Nextora Admin Portal. All rights reserved.
             </footer>
         </main>
     </div>
