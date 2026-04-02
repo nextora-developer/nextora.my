@@ -1,0 +1,101 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\OrderItem;
+
+class Product extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'category_id',
+        'name',
+        'slug',
+        'short_description',
+        'description',
+        'highlights',
+        'specs',
+        'price',
+        'stock',
+        'is_digital',
+        'digital_fields',
+        'has_variants',
+        'is_active',
+        'image',
+        'is_open_amount',
+        'min_amount',
+        'max_amount',
+        'amount_step',
+        'reward_points',
+    ];
+
+    protected $casts = [
+        'specs' => 'array',
+        'highlights' => 'array',
+        'digital_fields' => 'array',
+        'is_digital' => 'boolean',
+        'is_open_amount' => 'boolean',
+        'min_amount' => 'decimal:2',
+        'max_amount' => 'decimal:2',
+        'amount_step' => 'decimal:2',
+        'reward_points' => 'integer',
+    ];
+
+
+    public function category()
+    {
+        return $this->belongsTo(\App\Models\Category::class);
+    }
+
+    public function variants()
+    {
+        return $this->hasMany(ProductVariant::class);
+    }
+
+    public function options()
+    {
+        return $this->hasMany(ProductOption::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class)->orderBy('sort_order');
+    }
+
+    public function primaryImage()
+    {
+        return $this->hasOne(ProductImage::class)->where('is_primary', true);
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(\App\Models\ProductReview::class)
+            ->where('is_visible', true);
+    }
+
+    public function avgRating(): float
+    {
+        $avg = $this->reviews()->avg('rating');
+        return $avg ? round((float)$avg, 1) : 0.0;
+    }
+
+    public function reviewCount(): int
+    {
+        return (int)$this->reviews()->count();
+    }
+
+    public function orderItems(): HasMany
+    {
+        return $this->hasMany(OrderItem::class, 'product_id');
+    }
+}

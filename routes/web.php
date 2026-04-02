@@ -1,0 +1,355 @@
+<?php
+
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\VoucherController;
+use App\Http\Controllers\VoucherPageController;
+use App\Http\Controllers\ProductReviewController;
+use App\Http\Controllers\PublicAgentController;
+use App\Http\Controllers\GameSpinController;
+
+use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminOrderController;
+use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\AdminAddressController;
+use App\Http\Controllers\Admin\AdminReportController;
+use App\Http\Controllers\Admin\AdminBannerController;
+use App\Http\Controllers\Admin\AdminPaymentMethodController;
+use App\Http\Controllers\Admin\AdminShippingController;
+use App\Http\Controllers\Admin\AdminVoucherController;
+use App\Http\Controllers\Admin\AdminPopupBannerController;
+use App\Http\Controllers\Admin\AdminPointTransactionController;
+use App\Http\Controllers\Admin\AdminOrderInvoiceController;
+use App\Http\Controllers\Admin\AdminAgentController;
+use App\Http\Controllers\Admin\AdminHandlingFeeController;
+use App\Http\Controllers\Admin\AdminGameSpinRewardController;
+
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AccountOrderController;
+use App\Http\Controllers\AccountAddressController;
+use App\Http\Controllers\AccountProfileController;
+use App\Http\Controllers\AccountFavoriteController;
+use App\Http\Controllers\AccountReferralController;
+use App\Http\Controllers\AccountReviewController;
+use App\Http\Controllers\AccountOrderInvoiceController;
+
+use App\Http\Controllers\HitpayController;
+use App\Http\Controllers\RevenueMonsterController;
+use App\Http\Controllers\CommercePayController;
+
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
+
+
+/*
+|--------------------------------------------------------------------------
+| Public Shop (不需要登录)
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/', [ShopController::class, 'home'])->name('home');
+Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
+Route::get('/product/{product:slug}', [ShopController::class, 'show'])->name('shop.show');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add/{product}', [CartController::class, 'add'])->name('cart.add');
+Route::patch('/cart/update/{item}', [CartController::class, 'update'])->name('cart.update');
+Route::delete('/cart/remove/{item}', [CartController::class, 'remove'])->name('cart.remove');
+Route::get('/cart/count', function () {
+
+    if (auth()->check()) {
+        $cart = \App\Models\Cart::where('user_id', auth()->id())->first();
+    } else {
+        $cart = \App\Models\Cart::where('session_id', session()->getId())->first();
+    }
+
+    $count = $cart?->items()?->count() ?? 0;
+
+    return response()->json([
+        'count' => $count,
+    ]);
+})->name('cart.count');
+
+
+if (app()->environment('local')) {
+    Route::get('/test-mail', function () {
+        Mail::raw('This is a simple test email from Extech Ecommerce.', function ($message) {
+            $message->to('test@example.com')
+                ->subject('Test Email from Extech');
+        });
+
+        return 'Test mail sent!';
+    });
+}
+
+
+Route::get('/guideline', [PageController::class, 'guideline'])->name('guideline');
+Route::get('/faq', [PageController::class, 'faq'])->name('faq');
+Route::get('/reward-point', [PageController::class, 'rewardPoint'])->name('reward-point');
+Route::get('/vouchers', [VoucherPageController::class, 'index'])->name('vouchers.index');
+
+
+Route::get('/privacy-policy', [PageController::class, 'privacy'])->name('privacy');
+Route::get('/shipping-delivery', [PageController::class, 'shipping'])->name('shipping');
+Route::get('/returns-refunds', [PageController::class, 'returns'])->name('returns');
+Route::get('/terms-of-service', [PageController::class, 'terms'])->name('terms');
+
+Route::post('/voucher/apply', [VoucherController::class, 'apply'])->name('voucher.apply');
+Route::post('/voucher/remove', [VoucherController::class, 'remove'])->name('voucher.remove');
+
+Route::get('/verify-agent', [PublicAgentController::class, 'index'])->name('agents.index');
+Route::get('/verify-agent/pdf', [PublicAgentController::class, 'pdf'])->name('agents.verify.pdf');
+
+Route::get('/acca-professional-courses', [PageController::class, 'accaCourses'])->name('acca.courses');
+
+Route::get('/revenue-monster', [PageController::class, 'revenueMonster'])->name('revenue.monster');
+
+
+/*
+|--------------------------------------------------------------------------
+| Customer (需要登录的功能：Cart + Checkout + Account
+|--------------------------------------------------------------------------
+*/
+Route::middleware('auth')->group(function () {
+
+    // Checkout 也要登录
+    Route::get('/checkout', [CheckoutController::class, 'index'])
+        ->name('checkout.index');
+    Route::post('/checkout/place-order', [CheckoutController::class, 'store'])
+        ->name('checkout.store');
+    Route::get('/checkout/success/{order}', [CheckoutController::class, 'success'])
+        ->name('checkout.success');
+
+    // CommercePay
+    Route::get('/pay/commercepay/{order}', [CommercePayController::class, 'pay'])
+        ->name('pay.commercepay');
+
+    Route::get('/payment/commercepay/return/{order}', [CommercePayController::class, 'return'])
+        ->name('commercepay.return');
+
+    Route::get('/payment/pending/{order}', [CommercePayController::class, 'pending'])
+        ->name('payment.pending');
+
+    Route::get('/payment/status/{order}', [CommercePayController::class, 'status'])
+        ->name('payment.status');
+
+
+    Route::get('/games/spin', [GameSpinController::class, 'index'])->name('games.spin');
+    Route::post('/games/spin/play', [GameSpinController::class, 'play'])->name('games.spin.play');
+
+
+
+    // Account 相关
+    Route::prefix('account')->name('account.')->group(function () {
+
+        Route::get('/', [AccountController::class, 'index'])
+            ->name('index');
+
+        // Orders 
+        Route::get('/orders', [AccountOrderController::class, 'index'])->name('orders.index');
+        Route::get('/orders/{order}', [AccountOrderController::class, 'show'])->name('orders.show');
+        Route::post('/orders/{order}/complete', [AccountOrderController::class, 'markCompleted'])->name('orders.complete');
+        Route::get('/orders/{order}/invoice/pdf', [AccountOrderInvoiceController::class, 'pdf'])->name('orders.invoice.pdf');
+
+        // Address
+        Route::get('/addresses', [AccountAddressController::class, 'index'])
+            ->name('address.index');
+        Route::get('/addresses/create', [AccountAddressController::class, 'create'])
+            ->name('address.create');
+        Route::post('/addresses', [AccountAddressController::class, 'store'])
+            ->name('address.store');
+        Route::get('/addresses/{address}/edit', [AccountAddressController::class, 'edit'])
+            ->name('address.edit');
+        Route::put('/addresses/{address}', [AccountAddressController::class, 'update'])
+            ->name('address.update');
+        Route::delete('/addresses/{address}', [AccountAddressController::class, 'destroy'])
+            ->name('address.destroy');
+        Route::put('/addresses/{address}/default', [AccountAddressController::class, 'setDefault'])
+            ->name('address.set-default');
+
+        // Profile
+        Route::get('/profile', [AccountProfileController::class, 'edit'])
+            ->name('profile.edit');
+        Route::patch('/profile', [AccountProfileController::class, 'update'])
+            ->name('profile.update');
+        Route::delete('/profile', [AccountProfileController::class, 'destroy'])
+            ->name('profile.destroy');
+
+        // Favorites
+        Route::get('/favorites', [AccountFavoriteController::class, 'index'])->name('favorites.index');
+        Route::post('/favorites/{product}', [AccountFavoriteController::class, 'store'])
+            ->middleware('auth')
+            ->name('favorites.store');
+        Route::delete('/favorites/{product}', [AccountFavoriteController::class, 'destroy'])
+            ->middleware('auth')
+            ->name('favorites.destroy');
+
+        // Referral
+        Route::get('/referral', [AccountReferralController::class, 'index'])
+            ->name('referral.index');
+
+        // Review
+        Route::get('/reviews', [AccountReviewController::class, 'index'])->name('reviews.index');
+        Route::post('/reviews/{item}', [ProductReviewController::class, 'store'])->name('reviews.store');
+    });
+});
+
+/*
+|--------------------------------------------------------------------------
+| Admin Auth  (IMPORTANT: must be BEFORE protected admin routes)
+|--------------------------------------------------------------------------
+*/
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/login', [AdminAuthController::class, 'showLogin'])
+        ->middleware('guest')
+        ->name('login');
+
+    Route::post('/login', [AdminAuthController::class, 'login'])
+        ->middleware('guest')
+        ->name('login.submit');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Admin Panel (Protected)
+|--------------------------------------------------------------------------
+*/
+Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
+
+    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('logout');
+
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('home');
+
+    Route::resource('categories', AdminCategoryController::class);
+    Route::resource('products', AdminProductController::class);
+    Route::patch('products/{product}/toggle', [AdminProductController::class, 'toggle'])
+        ->name('products.toggle');
+    Route::post('products/{product}/duplicate', [AdminProductController::class, 'duplicate'])->name('products.duplicate');
+
+
+    Route::get('orders', [AdminOrderController::class, 'index'])->name('orders.index');
+    Route::get('orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
+    Route::post('orders/{order}/status', [AdminOrderController::class, 'updateStatus'])->name('orders.status');
+    Route::get('orders/{order}/invoice/pdf', [AdminOrderInvoiceController::class, 'pdf'])->name('orders.invoice.pdf');
+    Route::post('/admin/orders/bulk-update', [AdminOrderController::class, 'bulkUpdateStatus'])->name('orders.bulk-update');
+
+    Route::resource('users', AdminUserController::class)
+        ->only(['index', 'show', 'edit', 'update']);
+
+    // 地址：新增依附 user，其他用 address id
+    Route::get('users/{user}/addresses/create', [AdminAddressController::class, 'create'])
+        ->name('addresses.create');
+    Route::post('users/{user}/addresses', [AdminAddressController::class, 'store'])
+        ->name('addresses.store');
+    Route::post('users/{user}/points/adjust', [AdminUserController::class, 'adjustPoints'])->name('users.points.adjust');
+    Route::get('users/{user}/referrals', [AdminUserController::class, 'referrals'])->name('users.referrals');
+
+
+    Route::get('addresses/{address}/edit', [AdminAddressController::class, 'edit'])
+        ->name('addresses.edit');
+    Route::put('addresses/{address}', [AdminAddressController::class, 'update'])
+        ->name('addresses.update');
+
+    Route::delete('addresses/{address}', [AdminAddressController::class, 'destroy'])
+        ->name('addresses.destroy');
+
+    Route::post('addresses/{address}/make-default', [AdminAddressController::class, 'makeDefault'])
+        ->name('addresses.make-default');
+
+    // Reports
+    Route::get('/reports', [AdminReportController::class, 'index'])->name('reports.index');
+    Route::get('/reports/sales', [AdminReportController::class, 'sales'])->name('reports.sales');
+    Route::get('/reports/products', [AdminReportController::class, 'products'])->name('reports.products');
+    Route::get('/reports/orders', [AdminReportController::class, 'orders'])->name('reports.orders');
+    Route::get('/reports/customers', [AdminReportController::class, 'customers'])->name('reports.customers');
+    Route::get('/reports/export', [AdminReportController::class, 'export'])->name('reports.export');
+    Route::get('/reports/order-referral-rewards/export', [AdminReportController::class, 'exportOrderReferralRewardsReport'])->name('reports.order-referral-rewards.export');
+
+
+    // Banner
+    Route::resource('banners', AdminBannerController::class);
+
+    // Payment Method
+    Route::resource('payment-methods', AdminPaymentMethodController::class);
+
+    // Shipping
+    Route::get('/shipping', [AdminShippingController::class, 'index'])->name('shipping.index');
+    Route::get('/shipping/create', [AdminShippingController::class, 'create'])->name('shipping.create');
+    Route::post('/shipping', [AdminShippingController::class, 'store'])->name('shipping.store');
+    Route::get('/shipping/{rate}/edit', [AdminShippingController::class, 'edit'])->name('shipping.edit');
+    Route::put('/shipping/{rate}', [AdminShippingController::class, 'update'])->name('shipping.update');
+
+    // Voucher
+    Route::resource('/vouchers', AdminVoucherController::class)->except(['show']);
+    Route::post('/vouchers/{voucher}/toggle', [AdminVoucherController::class, 'toggle'])->name('vouchers.toggle');
+    Route::delete('/vouchers/{voucher}', [AdminVoucherController::class, 'destroy'])->name('vouchers.destroy');
+
+    // Pop Up Banner
+    Route::get('popup-banners', [AdminPopupBannerController::class, 'index'])->name('popup-banners.index');
+    Route::get('popup-banners/create', [AdminPopupBannerController::class, 'create'])->name('popup-banners.create');
+    Route::post('popup-banners', [AdminPopupBannerController::class, 'store'])->name('popup-banners.store');
+    Route::get('popup-banners/{popup_banner}/edit', [AdminPopupBannerController::class, 'edit'])->name('popup-banners.edit');
+    Route::put('popup-banners/{popup_banner}', [AdminPopupBannerController::class, 'update'])->name('popup-banners.update');
+    Route::delete('popup-banners/{popup_banner}', [AdminPopupBannerController::class, 'destroy'])->name('popup-banners.destroy');
+    Route::post('popup-banners/{popup_banner}/toggle', [AdminPopupBannerController::class, 'toggle'])->name('popup-banners.toggle');
+
+    // Point Transaction
+    Route::get('/points', [AdminPointTransactionController::class, 'index'])->name('points.index');
+    Route::get('/points/{pointTransaction}', [AdminPointTransactionController::class, 'show'])->name('points.show');
+
+    // Agents
+    Route::resource('agents', AdminAgentController::class)->except(['show']);
+
+    // Handling fee
+    Route::get('fees/handling', [AdminHandlingFeeController::class, 'index'])
+        ->name('fees.handling');
+    Route::post('fees/handling', [AdminHandlingFeeController::class, 'update'])
+        ->name('fees.handling.update');
+
+    // Spin
+    Route::get('spin-rewards', [AdminGameSpinRewardController::class, 'index'])->name('spin-rewards.index');
+    Route::get('spin-rewards/{spin_reward}/edit', [AdminGameSpinRewardController::class, 'edit'])->name('spin-rewards.edit');
+    Route::put('spin-rewards/{spin_reward}', [AdminGameSpinRewardController::class, 'update'])->name('spin-rewards.update');
+});
+
+/*
+|--------------------------------------------------------------------------
+| HitPay Payment Routes
+|--------------------------------------------------------------------------
+*/
+
+// Route::get('/pay/hitpay/{order}', [HitpayController::class, 'createPayment'])
+//     ->name('hitpay.pay');
+
+// Route::get('/payment/hitpay/return', [HitpayController::class, 'handleReturn'])
+//     ->name('hitpay.return');
+
+/*
+|--------------------------------------------------------------------------
+| Revenue Monster Payment Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('/pay/rm/{order}', [RevenueMonsterController::class, 'pay'])
+    ->name('pay.rm');
+
+Route::get('/payment/rm/return', [RevenueMonsterController::class, 'handleReturn'])
+    ->name('payment.rm.return');
+
+/*
+|--------------------------------------------------------------------------
+| CommercePay Payment Routes
+|--------------------------------------------------------------------------
+*/
+Route::post('/payment/commercepay/callback', [CommercePayController::class, 'callback'])
+    ->name('commercepay.callback');
+
+
+require __DIR__ . '/auth.php';

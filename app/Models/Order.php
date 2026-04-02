@@ -1,0 +1,102 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class Order extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'order_no',
+
+        'customer_name',
+        'customer_phone',
+        'customer_email',
+
+        'address_line1',
+        'address_line2',
+        'city',
+        'state',
+        'postcode',
+        'country',
+
+        'subtotal',
+        'shipping_fee',
+        'shipping_courier',
+        'tracking_number',
+        'shipped_at',
+        'pin_codes',
+        'fulfillment_note',
+        'digital_fulfilled_at',
+        'total',
+        'status',
+
+        'payment_method_code',
+        'payment_method_name',
+        'payment_receipt_path',
+
+        'payment_status',       // ex: pending / paid / failed
+        'payment_reference',    // HitPay payment_id
+        'gateway',
+
+        'remark',
+
+        'voucher_id',
+        'voucher_code',
+        'voucher_discount',
+        'shipping_discount',
+
+        'points_redeem',
+        'points_discount',
+
+        'rm_status',
+        'rm_transaction_id',
+        'rm_reference_id',
+        'rm_final_amount',
+        'rm_currency',
+        'rm_transaction_at',
+        'rm_raw_payload',
+
+        'handling_fee',
+        'handling_fee_percent',
+        'handling_fee_enabled',
+    ];
+
+    protected $casts = [
+        'shipped_at' => 'datetime',
+        'points_redeem'   => 'integer',
+        'points_discount' => 'decimal:2',
+        'rm_transaction_at' => 'datetime',
+        'rm_raw_payload' => 'array',
+        'pin_codes' => 'array',
+        'digital_fulfilled_at' => 'datetime',
+    ];
+
+    public function items(): HasMany
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public const REVENUE_STATUSES = [
+        'paid',
+        'processing',
+        'shipped',
+        'completed',
+    ];
+
+    public function scopeRevenue($query)
+    {
+        return $query->whereIn('status', self::REVENUE_STATUSES);
+    }
+}
