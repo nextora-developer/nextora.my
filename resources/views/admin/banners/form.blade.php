@@ -7,7 +7,7 @@
             <h1 class="text-3xl font-semibold text-gray-900 tracking-tight">
                 {{ $banner->exists ? 'Edir Banner' : 'Create Homepage Banner' }}
             </h1>
-            <p class="text-sm text-gray-500 mt-1">Recommended aspect ratio: 1920 × 600 pixels.</p>
+            <p class="text-sm text-gray-500 mt-1">Recommended aspect ratio: 907 × 520 pixels.</p>
         </div>
 
         <a href="{{ route('admin.banners.index') }}"
@@ -66,7 +66,7 @@
                     <div class="flex flex-col md:flex-row gap-6">
                         {{-- Preview Box --}}
                         <div
-                            class="w-full md:w-64 aspect-[19/6] md:aspect-auto md:h-32 rounded-xl bg-white border border-gray-200 shadow-inner flex items-center justify-center overflow-hidden">
+                            class="w-full md:w-64 aspect-[16/10] md:aspect-auto md:h-32 rounded-xl bg-white border border-gray-200 shadow-inner flex items-center justify-center overflow-hidden">
                             <img id="bannerPreview"
                                 src="{{ $banner->image_path ? asset('storage/' . $banner->image_path) : '' }}"
                                 class="h-full w-full object-cover {{ $banner->image_path ? '' : 'hidden' }}" alt="Preview">

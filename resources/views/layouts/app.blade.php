@@ -92,16 +92,19 @@
                 {{-- Brand --}}
                 <div class="lg:col-span-4">
                     <div class="flex items-center mb-6">
-                        {{-- <span style="font-family: 'Cinzel', serif;"
-                            class="text-[28px] lg:text-[32px] font-bold tracking-[0.06em]
-               text-transparent bg-clip-text
-               bg-gradient-to-b from-[#E7C76A] via-[#D4AF37] to-[#9C7414]
-               uppercase opacity-90 hover:opacity-100 transition">
-                            NEXTORA
-                        </span> --}}
-                        <div style="font-family: 'Cinzel', serif;"
-                            class="text-3xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-tr from-[#9C7414] via-[#E7C76A] to-[#D4AF37]">
-                            NEXTORA
+                        <div class="leading-tight">
+
+                            {{-- Brand --}}
+                            <div style="font-family: 'Cinzel', serif;"
+                                class="text-3xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-tr from-[#9C7414] via-[#E7C76A] to-[#D4AF37]">
+                                NEXTORA
+                            </div>
+
+                            {{-- Tagline --}}
+                            <div class="mt-1 text-[11px] tracking-[0.25em] text-neutral-400 uppercase">
+                                Your Vision, Our Creation
+                            </div>
+
                         </div>
                     </div>
 
@@ -153,7 +156,7 @@
                     <div class="h-px w-10 bg-white/15 mt-4 mb-6"></div>
 
                     <ul class="space-y-4">
-                        @foreach ([['label' => 'Official Site', 'route' => 'https://brif.cloud'], ['label' => 'Reward Point', 'route' => route('reward-point')], ['label' => 'Voucher', 'route' => route('vouchers.index')], ['label' => 'Verify Agent', 'route' => route('agents.index')], ['label' => 'Guideline', 'route' => route('guideline')], ['label' => 'Faq', 'route' => route('faq')]] as $item)
+                        @foreach ([['label' => 'Reward Point', 'route' => route('reward-point')], ['label' => 'Voucher', 'route' => route('vouchers.index')], ['label' => 'Verify Agent', 'route' => route('agents.index')], ['label' => 'Guideline', 'route' => route('guideline')], ['label' => 'Faq', 'route' => route('faq')]] as $item)
                             <li>
                                 <a href="{{ $item['route'] }}"
                                     class="text-sm text-gray-300 hover:text-white transition relative inline-block

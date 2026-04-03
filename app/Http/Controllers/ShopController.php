@@ -81,15 +81,29 @@ class ShopController extends Controller
     {
         $query = Product::query()
             ->where('is_active', true)
-            ->withMin('variants', 'price'); // ✅ 生成 variants_min_price
+            ->withMin('variants', 'price'); // variants_min_price
 
+        // =========================
+        // 🔍 Search (name + description + price)
+        // =========================
         if ($search = $request->q) {
             $query->where(function ($q) use ($search) {
                 $q->where('name', 'like', "%{$search}%")
                     ->orWhere('short_description', 'like', "%{$search}%");
+
+                // ✅ 如果输入的是数字 → 也 search price
+                if (is_numeric($search)) {
+                    $q->orWhere('price', $search)
+                        ->orWhereHas('variants', function ($vq) use ($search) {
+                            $vq->where('price', $search);
+                        });
+                }
             });
         }
 
+        // =========================
+        // 📂 Category filter
+        // =========================
         if ($categorySlug = $request->category) {
             $cat = Category::where('slug', $categorySlug)
                 ->where('is_active', true)
@@ -97,21 +111,42 @@ class ShopController extends Controller
 
             if ($cat) {
                 if (is_null($cat->parent_id)) {
-                    // ✅ parent：筛选它所有 sub 的 products
                     $subIds = Category::where('parent_id', $cat->id)
                         ->where('is_active', true)
                         ->pluck('id');
 
-                    // 没有 sub 就返回空（避免 parent 误显示全部产品）
                     $query->whereIn('category_id', $subIds->all());
                 } else {
-                    // ✅ sub：直接筛
                     $query->where('category_id', $cat->id);
                 }
             }
         }
 
-        // ✅ 排序用价格：优先 variants 最低价，没有就用 products.price
+        // =========================
+        // 💰 Price filter (最重要🔥)
+        // =========================
+        $min = $request->min_price;
+        $max = $request->max_price;
+
+        if ($min !== null || $max !== null) {
+            if ($min !== null) {
+                $query->whereRaw(
+                    "COALESCE(variants_min_price, price) >= ?",
+                    [$min]
+                );
+            }
+
+            if ($max !== null) {
+                $query->whereRaw(
+                    "COALESCE(variants_min_price, price) <= ?",
+                    [$max]
+                );
+            }
+        }
+
+        // =========================
+        // 🔃 Sorting
+        // =========================
         $sortPriceExpr = "COALESCE(variants_min_price, price)";
 
         switch ($request->sort) {
@@ -131,11 +166,17 @@ class ShopController extends Controller
                 $query->latest();
         }
 
+        // =========================
+        // 📦 Pagination
+        // =========================
         $products = $query
             ->paginate(12)
             ->onEachSide(2)
             ->withQueryString();
 
+        // =========================
+        // 📂 Categories
+        // =========================
         $categories = Category::where('is_active', true)
             ->whereNull('parent_id')
             ->with(['children' => function ($q) {
