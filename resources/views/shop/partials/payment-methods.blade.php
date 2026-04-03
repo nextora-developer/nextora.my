@@ -1,4 +1,4 @@
-<section class="relative">
+<section class="relative bg-white">
     <div class="mx-auto max-w-7xl5 px-4 sm:px-6 lg:px-8 pb-6 py-10">
 
         {{-- marquee --}}

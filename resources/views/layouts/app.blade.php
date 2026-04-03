@@ -29,6 +29,24 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        .notice-marquee {
+            flex-shrink: 0;
+            min-width: max-content;
+            animation: notice-marquee 28s linear infinite;
+        }
+
+        @keyframes notice-marquee {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
 </head>
 
 <body class="font-sans antialiased">
@@ -57,7 +75,7 @@
     {{-- Global Footer --}}
     <footer
         class="relative overflow-hidden bg-black text-white border-t border-white/10
-    {{ $hasMobileTab ? 'pb-24 lg:pb-0' : '' }}">
+        {{ $hasMobileTab ? 'pb-24 lg:pb-0' : '' }}">
         {{-- Soft premium background glow --}}
         <div class="absolute inset-0 pointer-events-none">
             <div class="absolute -top-32 -left-40 w-[520px] h-[520px] rounded-full bg-[#D4AF37]/10 blur-3xl"></div>
@@ -73,20 +91,18 @@
 
                 {{-- Brand --}}
                 <div class="lg:col-span-4">
-                    {{-- <div class="flex items-center gap-3 mb-6"> <img src="{{ asset('images/logo.png') }}" alt="BR Store"
-                            class="h-10 w-10 rounded-2xl object-cover" />
-                        <div class="flex flex-col leading-tight"> <span
-                                class="text-xl font-bold tracking-tight text-white">BRIF.MY</span> <span
-                                class="text-xs text-gray-400 tracking-wide">Premium Essentials</span> </div>
-                    </div> --}}
                     <div class="flex items-center mb-6">
-                        <span style="font-family: 'Cinzel', serif;"
+                        {{-- <span style="font-family: 'Cinzel', serif;"
                             class="text-[28px] lg:text-[32px] font-bold tracking-[0.06em]
                text-transparent bg-clip-text
                bg-gradient-to-b from-[#E7C76A] via-[#D4AF37] to-[#9C7414]
                uppercase opacity-90 hover:opacity-100 transition">
                             NEXTORA
-                        </span>
+                        </span> --}}
+                        <div style="font-family: 'Cinzel', serif;"
+                            class="text-3xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-tr from-[#9C7414] via-[#E7C76A] to-[#D4AF37]">
+                            NEXTORA
+                        </div>
                     </div>
 
 

@@ -1,75 +1,54 @@
 {{-- Bottom CTA Section --}}
-<section class="relative isolate overflow-hidden antialiased">
+<section class="relative overflow-hidden bg-white py-16 lg:py-20">
+    <div class="max-w-7xl5 mx-auto px-4 sm:px-6 lg:px-8">
 
-    {{-- High-End Ambient Background Composition --}}
-    {{-- <div class="absolute inset-0 pointer-events-none z-0 select-none">
-        <div class="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2">
-            <div class="w-[1200px] h-[600px] rounded-full bg-[#D4AF37]/10 blur-[100px]"></div>
-        </div>
+        {{-- Separated Card: Soft Pearl & Gold --}}
+        <div class="relative overflow-hidden rounded-[3rem] border border-[#E7C76A]/40 bg-[#FAF9F6] shadow-[0_15px_60px_-15px_rgba(231,199,106,0.15)]">
+            
+            <div class="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-gradient-to-br from-[#E7C76A] to-transparent opacity-30 blur-[100px]"></div>
+            
+            <div class="relative px-8 py-16 sm:px-12 lg:px-20 lg:py-16">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-12">
 
-        <div class="absolute right-[-10%] top-1/2 -translate-y-1/2">
-            <div class="w-[600px] h-[600px] rounded-full bg-black/[0.02] blur-[80px]"></div>
-        </div>
-
-        <div class="absolute inset-0 opacity-[0.3]"
-            style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,.05) 1px, transparent 1px);
-                   background-size: 32px 32px;">
-        </div>
-
-    </div> --}}
-
-    <div class="relative max-w-7xl5 mx-auto px-6 py-10 lg:py-16">
-        <div
-            class="relative overflow-hidden bg-white rounded-[3rem] border border-black/[0.03] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)]">
-
-            {{-- Internal Decorative Pattern --}}
-            <div class="absolute inset-0 opacity-[0.03] pointer-events-none"
-                style="background-image: url('data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='1'/%3E%3C/g%3E%3C/svg%3E');">
-            </div>
-
-            <div
-                class="relative px-8 py-16 md:px-20 md:py-24 flex flex-col lg:flex-row items-center justify-between gap-12">
-
-                {{-- Text Content --}}
-                <div class="text-center lg:text-left max-w-2xl">
-                    <h2 class="text-sm uppercase tracking-[0.4em] text-[#D4AF37] font-bold mb-6">Take the Next
-                        Step</h2>
-                    <p class="text-4xl md:text-5xl font-light text-black tracking-tight leading-[1.1]">
-                        Ready to elevate <br class="hidden md:block" />
-                        your <span class="font-serif italic text-black/70">everyday essentials?</span>
-                    </p>
-                </div>
-
-                {{-- Action Buttons --}}
-                <div class="flex flex-col sm:flex-row items-center gap-5 w-full lg:w-auto">
-                    {{-- Primary Action --}}
-                    <a href="{{ route('shop.index') }}"
-                        class="group relative w-full sm:w-auto inline-flex items-center justify-center px-10 py-5 rounded-2xl
-                        text-[13px] font-bold uppercase tracking-[0.2em]
-                        bg-black text-white overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-black/20 hover:-translate-y-1">
-                        <span class="relative z-10">Start Shopping</span>
-                        <svg class="relative z-10 ml-3 h-4 w-4 transform transition-transform duration-500 group-hover:translate-x-2"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M14.25 7.75L18.5 12m0 0l-4.25 4.25M18.5 12H5.5" />
-                        </svg>
-                        {{-- Button Shine Effect --}}
-                        <div
-                            class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000">
+                    {{-- Text Content --}}
+                    <div class="max-w-2xl text-left">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="h-2 w-2 rounded-full bg-[#D4AF37]"></span>
+                            <p class="text-sm font-bold uppercase tracking-[0.4em] text-[#9C7414]">
+                                The Nextora Collective
+                            </p>
                         </div>
-                    </a>
 
-                    {{-- Secondary Action --}}
-                    <a href="#categories"
-                        class="w-full sm:w-auto inline-flex items-center justify-center px-10 py-5 rounded-2xl
-                        text-[13px] font-bold uppercase tracking-[0.2em]
-                        bg-transparent text-black 
-                        hover:bg-black/5 hover:border-black transition-all duration-300">
-                        View Categories
-                    </a>
+                        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-neutral-900 leading-[1.05]">
+                            Elevate your 
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#E7C76A] to-[#9C7414]">Daily Aesthetic</span>
+                        </h2>
+
+                        <p class="mt-8 text-base sm:text-lg text-neutral-600 max-w-lg leading-relaxed font-medium">
+                            Discover curated essentials and luxury creations designed to elevate your everyday lifestyle.
+                        </p>
+                    </div>
+
+                    {{-- Action Buttons --}}
+                    <div class="flex flex-row gap-4 w-full lg:w-auto">
+                        
+                        {{-- Primary: Solid Gold --}}
+                        <a href="{{ route('shop.index') }}"
+                            class="group relative inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#E7C76A] via-[#D4AF37] to-[#9C7414] px-10 py-5 text-xs font-black tracking-[0.2em] text-white transition-all duration-300 hover:scale-105 hover:shadow-[0_10px_30px_rgba(212,175,55,0.4)] active:scale-95">
+                            SHOP NOW
+                        </a>
+
+                        {{-- Secondary: Minimalist Outline --}}
+                        <a href="#categories"
+                            class="inline-flex items-center justify-center rounded-full border border-neutral-200 bg-white px-10 py-5 text-xs font-black tracking-[0.2em] text-neutral-800 transition-all duration-300 hover:border-[#D4AF37] hover:text-[#9C7414]">
+                            BROWSE CATEGORIES
+                        </a>
+                        
+                    </div>
+
                 </div>
-
             </div>
         </div>
+
     </div>
 </section>

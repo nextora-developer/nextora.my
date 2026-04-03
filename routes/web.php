@@ -43,7 +43,6 @@ use App\Http\Controllers\HitpayController;
 use App\Http\Controllers\RevenueMonsterController;
 use App\Http\Controllers\CommercePayController;
 
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
