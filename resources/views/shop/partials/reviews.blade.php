@@ -5,43 +5,48 @@
         collect([
             [
                 'name' => 'Aina',
-                'title' => 'Fast delivery & premium packaging',
-                'body' => 'Everything arrived nicely packed and feels premium. Definitely ordering again.',
+                'title' => 'Everything delivered as expected',
+                'body' =>
+                    'The whole process was smooth from start to finish. Got what I purchased without any issues, quite reliable.',
                 'rating' => 5,
-                'meta' => 'Verified purchase • Essentials',
+                'meta' => 'Verified purchase • Digital',
             ],
             [
                 'name' => 'Haziq',
-                'title' => 'Smooth checkout, legit product',
-                'body' => 'Payment was smooth and the product is genuine. Support was responsive too.',
+                'title' => 'Checkout was smooth',
+                'body' =>
+                    'Payment went through without any issue. Product also legit, not fake. Customer support replied quite fast too.',
                 'rating' => 5,
                 'meta' => 'Verified purchase • Vouchers',
             ],
             [
                 'name' => 'Sofia',
-                'title' => 'Great value for money',
-                'body' => 'Good quality and reasonable pricing. Redeeming vouchers was easy.',
+                'title' => 'Worth the price',
+                'body' =>
+                    'Quality is good for what I paid. Voucher redemption also very straightforward, no confusing steps.',
                 'rating' => 4,
                 'meta' => 'Verified purchase • Top-ups',
             ],
             [
                 'name' => 'Daniel',
-                'title' => 'Clean UI, easy to find items',
-                'body' => 'The site is easy to navigate, and product details are clear. Nice experience.',
+                'title' => 'Website easy to use',
+                'body' =>
+                    'I like how simple the site is. Can find what I want quickly and product info is clear enough.',
                 'rating' => 5,
                 'meta' => 'Verified purchase • Essentials',
             ],
             [
                 'name' => 'Farah',
-                'title' => 'Instant delivery for digital items',
-                'body' => 'Bought a digital product and received it almost instantly. Very convenient.',
+                'title' => 'Got my item almost instantly',
+                'body' => 'Bought a digital item and received it within seconds. Very convenient, no need to wait.',
                 'rating' => 5,
                 'meta' => 'Verified purchase • Digital',
             ],
             [
                 'name' => 'Adam',
-                'title' => 'Reliable and trustworthy store',
-                'body' => 'Order process was clear and transparent. Feels like a trustworthy platform.',
+                'title' => 'Feels trustworthy',
+                'body' =>
+                    'The whole process was quite transparent. No hidden stuff, and everything updated properly after payment.',
                 'rating' => 4,
                 'meta' => 'Verified purchase • General',
             ],
@@ -63,7 +68,7 @@
                     Reviews
                 </div>
                 <h2 class="mt-3 text-2xl sm:text-3xl font-black tracking-tight text-black">
-                    Loved by shoppers across Malaysia
+                    What they say
                 </h2>
             </div>
 

@@ -1,5 +1,5 @@
 {{-- Popular products --}}
-<section id="popular-products" class="relative overflow-hidden bg-white">
+<section id="popular-products" class="relative overflow-hidden bg-gradient-to-b from-white to-[#F3F3F0]">
 
     <div class="relative max-w-7xl5 mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-12">
 

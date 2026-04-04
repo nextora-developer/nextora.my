@@ -108,6 +108,10 @@ Route::get('/verify-agent', [PublicAgentController::class, 'index'])->name('agen
 Route::get('/verify-agent/pdf', [PublicAgentController::class, 'pdf'])->name('agents.verify.pdf');
 
 Route::get('/acca-professional-courses', [PageController::class, 'accaCourses'])->name('acca.courses');
+Route::get('/web-development', [PageController::class, 'webDevelopment'])->name('web-development');
+Route::get('/payment-gateway', [PageController::class, 'paymentGateway'])->name('payment-gateway');
+
+
 
 Route::get('/revenue-monster', [PageController::class, 'revenueMonster'])->name('revenue.monster');
 

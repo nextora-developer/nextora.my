@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="bg-gradient-to-b from-[#FAFAF8] to-[#F3F3F0]">
+    <div class="bg-[#F9F7F2]">
 
         <div class="relative overflow-hidden">
             <div class="relative z-10">

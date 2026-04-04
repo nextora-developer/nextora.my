@@ -51,6 +51,15 @@ class PageController extends Controller
         return view('pages.revenue-monster');
     }
 
+    public function webDevelopment()
+    {
+        return view('pages.web-development');
+    }
+
+    public function paymentGateway()
+    {
+        return view('pages.payment-gateway');
+    }
 
 
     public function accaCourses()

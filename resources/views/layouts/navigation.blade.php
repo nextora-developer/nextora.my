@@ -127,8 +127,37 @@
                             </div>
                         </div>
 
-                        {{-- Help --}}
+                        {{-- Service --}}
                         <div class="relative" x-data="{ open: false }">
+                            <button type="button" @click="open = !open" @click.outside="open = false"
+                                class="{{ $navBase }} {{ $navIdle }} flex items-center gap-2">
+                                Service
+                                <svg class="h-4 w-4 transition-transform" :class="{ 'rotate-180': open }" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </button>
+
+                            <div x-cloak x-show="open" x-transition
+                                class="absolute left-0 top-full mt-3 w-56 rounded-2xl border border-neutral-200 bg-white shadow-xl overflow-hidden">
+                                <div class="p-2">
+
+                                    <a href="{{ route('web-development') }}"
+                                        class="block px-4 py-3 rounded-xl text-sm font-medium text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900">
+                                        Web Development
+                                    </a>
+                                    
+                                    <a href="{{ route('payment-gateway') }}"
+                                        class="block px-4 py-3 rounded-xl text-sm font-medium text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900">
+                                        Payment Gateway
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- Help --}}
+                        {{-- <div class="relative" x-data="{ open: false }">
                             <button type="button" @click="open = !open" @click.outside="open = false"
                                 class="{{ $navBase }} {{ $navIdle }} flex items-center gap-2">
                                 Help
@@ -153,7 +182,7 @@
                                     </a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>

@@ -156,7 +156,7 @@
                     <div class="h-px w-10 bg-white/15 mt-4 mb-6"></div>
 
                     <ul class="space-y-4">
-                        @foreach ([['label' => 'Reward Point', 'route' => route('reward-point')], ['label' => 'Voucher', 'route' => route('vouchers.index')], ['label' => 'Verify Agent', 'route' => route('agents.index')], ['label' => 'Guideline', 'route' => route('guideline')], ['label' => 'Faq', 'route' => route('faq')]] as $item)
+                        @foreach ([['label' => 'Shop', 'route' => route('shop.index')], ['label' => 'Reward Point', 'route' => route('reward-point')], ['label' => 'Voucher', 'route' => route('vouchers.index')], ['label' => 'Verify Agent', 'route' => route('agents.index')], ['label' => 'Web Development', 'route' => route('web-development')], ['label' => 'Payment Gateway', 'route' => route('payment-gateway')]] as $item)
                             <li>
                                 <a href="{{ $item['route'] }}"
                                     class="text-sm text-gray-300 hover:text-white transition relative inline-block
@@ -179,7 +179,7 @@
                     <div class="h-px w-10 bg-white/15 mt-4 mb-6"></div>
 
                     <ul class="space-y-4">
-                        @foreach ([['label' => 'Terms & Conditions', 'route' => route('terms')], ['label' => 'Privacy Policy', 'route' => route('privacy')], ['label' => 'Shipping & Delivery', 'route' => route('shipping')], ['label' => 'Returns & Refunds', 'route' => route('returns')]] as $item)
+                        @foreach ([['label' => 'Terms & Conditions', 'route' => route('terms')], ['label' => 'Privacy Policy', 'route' => route('privacy')], ['label' => 'Shipping & Delivery', 'route' => route('shipping')], ['label' => 'Returns & Refunds', 'route' => route('returns')], ['label' => 'Guideline', 'route' => route('guideline')], ['label' => 'Faq', 'route' => route('faq')]] as $item)
                             <li>
                                 <a href="{{ $item['route'] }}"
                                     class="text-sm text-gray-300 hover:text-white transition relative inline-block
