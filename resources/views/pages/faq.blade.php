@@ -118,7 +118,7 @@
                     </div>
 
                     {{-- Question 3 --}}
-                    <div x-show="match('contact support help whatsapp email customer service cs number phone +6012-3011610 cs@brinnovatefuture.com')"
+                    <div x-show="match('contact support help whatsapp email customer service cs number phone +6012-3011610 nextoraone@gmail.com')"
                         class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm transition-all duration-300 hover:border-[#D4AF37]/30">
 
                         <button @click="active !== 3 ? active = 3 : active = null"
@@ -141,7 +141,7 @@
                                 </li>
                                 <li class="flex items-center gap-2">
                                     <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
-                                    <strong>Email:</strong> cs@brinnovatefuture.com
+                                    <strong>Email:</strong> nextoraone@gmail.com
                                 </li>
                             </ul>
                         </div>
@@ -404,7 +404,7 @@
                             please get in
                             touch with our friendly team.</p>
                         <div class="flex flex-wrap items-center justify-center gap-4">
-                            <a href="https://wa.me/60123011610"
+                            <a href="https://wa.me/60182222507"
                                 class="inline-flex items-center px-6 py-3 rounded-full bg-[#25D366] text-white text-sm font-bold hover:opacity-90 transition">
                                 Chat on WhatsApp
                             </a>

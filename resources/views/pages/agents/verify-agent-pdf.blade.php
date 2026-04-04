@@ -181,7 +181,7 @@
                 </tr>
                 <tr>
                     <th>Official Support</th>
-                    <td>cs@brinnovatefuture.com</td>
+                    <td>nextoraone@gmail.com</td>
                 </tr>
                 <tr>
                     <th>Payment Policy</th>

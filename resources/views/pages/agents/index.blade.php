@@ -343,7 +343,7 @@
                                 <span class="text-xs font-black uppercase tracking-widest text-gray-400">Email
                                     Inquiry</span>
                             </div>
-                            <div class="text-xl font-bold text-gray-900 break-all">cs@brinnovatefuture.com</div>
+                            <div class="text-xl font-bold text-gray-900 break-all">nextoraone@gmail.com</div>
                             <p class="mt-2 text-sm text-gray-500 font-medium">Official correspondence channel for
                                 formal queries.</p>
                         </div>
@@ -364,7 +364,7 @@
                             <div class="space-y-1">
                                 <div class="text-lg font-medium text-gray-500 mb-5">Maybank</div>
 
-                                <div class="text-lg font-black text-gray-900 uppercase">BR INNOVATE FUTURE SDN. BHD.
+                                <div class="text-lg font-black text-gray-900 uppercase">NEXTORA
                                 </div>
 
                                 <div class="text-2xl font-mono font-bold text-gray-900 tracking-tighter mt-5">
@@ -422,10 +422,10 @@
                     <p class="text-gray-400 text-base">Help us keep the community safe by reporting fraud.</p>
                 </div>
                 <div class="flex gap-3 shrink-0">
-                    <a href="mailto:cs@brinnovatefuture.com"
+                    <a href="mailto:nextoraone@gmail.com"
                         class="px-5 py-2.5 bg-red-600 text-white rounded-xl text-sm font-bold hover:bg-red-700 transition-all">Email
                         Report</a>
-                    <a href="https://wa.me/60123011610"
+                    <a href="https://wa.me/60182222507"
                         class="px-5 py-2.5 bg-white/10 text-white rounded-xl text-sm font-bold hover:bg-white/20 transition-all border border-white/10">WhatsApp</a>
                 </div>
             </div>

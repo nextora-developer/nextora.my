@@ -368,7 +368,7 @@
             <div class="spin-topbar">
                 <div class="spin-badge">
                     <span class="spin-badge-dot"></span>
-                    BRIF SPIN
+                    Nextora SPIN
                 </div>
 
                 @php

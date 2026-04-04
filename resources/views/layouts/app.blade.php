@@ -9,11 +9,11 @@
 
     <link rel="apple-touch-icon" href="/images/icon-192.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="BRIF.MY">
+    <meta name="apple-mobile-web-app-title" content="NEXTORA.MY">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'BRIF.MY') }}</title>
+    <title>{{ config('app.name', 'NEXTORA.MY') }}</title>
 
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 
@@ -296,7 +296,7 @@
                         </li>
 
                         <li class="text-sm text-gray-400">
-                            <a href="mailto:cs@brinnovatefuture.com" class="hover:text-white transition">
+                            <a href="mailto:nextoraone@gmail.com" class="hover:text-white transition">
                                 nextoraone@gmail.com
                             </a>
                         </li>

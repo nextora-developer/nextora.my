@@ -20,24 +20,33 @@
                 {{ __('Current Password') }}
             </label>
 
-            <input id="update_password_current_password" name="current_password" type="password"
+            <input id="update_password_current_password"
+                name="current_password"
+                type="password"
                 autocomplete="current-password"
+                placeholder="Enter your current password"
                 class="w-full rounded-xl border-gray-200 text-base px-3 py-3
-                   focus:border-[#D4AF37] focus:ring-[#D4AF37]/30" />
+                       placeholder:text-gray-400
+                       focus:border-[#D4AF37] focus:ring-[#D4AF37]/30" />
 
             @error('current_password', 'updatePassword')
                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
             @enderror
         </div>
 
-
+        {{-- New password --}}
         <div>
             <label for="update_password_password" class="block text-sm text-gray-500 mb-1">
                 {{ __('New Password') }}
             </label>
 
-            <input id="update_password_password" name="password" type="password" autocomplete="new-password"
+            <input id="update_password_password"
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                placeholder="Create a new password"
                 class="w-full rounded-xl border-gray-200 text-base px-3 py-3
+                       placeholder:text-gray-400
                        focus:border-[#D4AF37] focus:ring-[#D4AF37]/30" />
 
             @error('password', 'updatePassword')
@@ -45,20 +54,26 @@
             @enderror
         </div>
 
+        {{-- Confirm password --}}
         <div>
             <label for="update_password_password_confirmation" class="block text-sm text-gray-500 mb-1">
                 {{ __('Confirm Password') }}
             </label>
 
-            <input id="update_password_password_confirmation" name="password_confirmation" type="password"
+            <input id="update_password_password_confirmation"
+                name="password_confirmation"
+                type="password"
                 autocomplete="new-password"
+                placeholder="Re-enter new password"
                 class="w-full rounded-xl border-gray-200 text-base px-3 py-3
+                       placeholder:text-gray-400
                        focus:border-[#D4AF37] focus:ring-[#D4AF37]/30" />
 
             @error('password_confirmation', 'updatePassword')
                 <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
             @enderror
         </div>
+
     </div>
 
     {{-- buttons --}}

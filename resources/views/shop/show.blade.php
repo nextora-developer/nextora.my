@@ -523,9 +523,9 @@
                                         </label>
                                         <button type="submit" @disabled(!$canAddToCart)
                                             class="w-full h-14 rounded-2xl font-bold text-sm uppercase tracking-widest transition-all shadow-xl flex items-center justify-center gap-3 group
-    {{ $canAddToCart
-        ? 'bg-[#1a1a1a] text-white hover:bg-black shadow-black/10'
-        : 'bg-gray-200 text-gray-500 cursor-not-allowed shadow-none' }}">
+                                    {{ $canAddToCart
+                                    ? 'bg-[#1a1a1a] text-white hover:bg-black shadow-black/10'
+                                    : 'bg-gray-200 text-gray-500 cursor-not-allowed shadow-none' }}">
                                             <span>{{ $canAddToCart ? 'Add to Cart' : 'Verified Account Required' }}</span>
 
                                             @if ($canAddToCart)

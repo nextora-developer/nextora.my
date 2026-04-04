@@ -56,7 +56,7 @@ class PageController extends Controller
     public function accaCourses()
     {
         $whatsapp = [
-            'phone' => '60123011610', // ✅ 换你的号码
+            'phone' => '60182222507', // ✅ 换你的号码
             'text'  => 'Hi! I want to get ACCA course details (Edufluence x Nextora).',
         ];
 

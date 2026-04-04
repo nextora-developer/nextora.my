@@ -3,7 +3,7 @@
     {{-- Header --}}
     <div class="flex items-center justify-between gap-4 mb-8">
         <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-900">
-            BRIF Spin Wheel
+            NEXTORA Spin Wheel
         </h2>
         <span
             class="px-3 py-1 rounded-full bg-[#D4AF37]/10 text-[#8f6a10] text-[10px] font-black uppercase tracking-widest">

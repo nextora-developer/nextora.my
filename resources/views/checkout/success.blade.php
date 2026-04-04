@@ -66,7 +66,7 @@
 
             {{-- Support Footer --}}
             <p class="mt-12 text-sm text-gray-400">
-                Need help? <a href="https://wa.me/60123011610" class="text-gray-600 underline underline-offset-4 decoration-gray-200 hover:decoration-gray-400">Contact Support</a>
+                Need help? <a href="https://wa.me/60182222507" class="text-gray-600 underline underline-offset-4 decoration-gray-200 hover:decoration-gray-400">Contact Support</a>
             </p>
 
         </div>

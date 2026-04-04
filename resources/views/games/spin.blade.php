@@ -870,7 +870,7 @@
 
                 <div class="sub scrollable" style="line-height:1.65;">
                     <strong>1. Eligibility</strong><br>
-                    • This spin wheel feature is available to <strong>verified BRIF users only</strong>.<br>
+                    • This spin wheel feature is available to <strong>verified Nextora users only</strong>.<br>
                     • Unverified accounts are not eligible to participate.<br><br>
 
                     <strong>2. Spin Chances</strong><br>
@@ -886,19 +886,19 @@
 
                     <strong>4. Reward Points</strong><br>
                     • Reward points are non-transferable and have no cash value.<br>
-                    • Points may only be used according to BRIF’s reward and redemption rules.<br><br>
+                    • Points may only be used according to Nextora reward and redemption rules.<br><br>
 
                     <strong>5. Fair Use</strong><br>
                     • Any attempt to abuse, automate, manipulate, or exploit the system is strictly prohibited.<br>
-                    • BRIF reserves the right to revoke rewards or suspend accounts involved in suspicious
+                    • Nextora reserves the right to revoke rewards or suspend accounts involved in suspicious
                     activity.<br><br>
 
                     <strong>6. System Issues</strong><br>
-                    • In the event of system errors, network failures, or interruptions, BRIF reserves the right to
+                    • In the event of system errors, network failures, or interruptions, Nextora reserves the right to
                     review, adjust, or void affected results.<br><br>
 
                     <strong>7. Modifications</strong><br>
-                    • BRIF reserves the right to modify, suspend, or terminate this feature at any time without prior
+                    • Nextora reserves the right to modify, suspend, or terminate this feature at any time without prior
                     notice.
                 </div>
 

@@ -209,10 +209,10 @@
                     <h1 style="margin: 5px 0 0 0; font-size: 28px;">#{{ $order->order_no }}</h1>
                 </td>
                 <td class="right">
-                    <div class="brand-name">BR Innovate Future Sdn. Bhd.</div>
+                    <div class="brand-name">NEXTORA</div>
                     <div class="muted" style="font-size: 12px;">
                         1592246-D<br>
-                        cs@brinnovatefuture.com
+                        nextoraone@gmail.com
                     </div>
                 </td>
             </tr>

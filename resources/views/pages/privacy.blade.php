@@ -56,11 +56,10 @@
                         <section id="introduction">
                             <h2 class="text-xl font-bold text-gray-900 mb-4">1. Introduction</h2>
                             <p>
-                                This Privacy Policy (“Policy”) describes how <strong>BR Innovate Future Sdn.
-                                    Bhd.</strong>
-                                (“BRIF”, “we”, “us”, “our”) collects, uses, discloses, stores, and protects Personal
+                                This Privacy Policy (“Policy”) describes how <strong>NEXTORA</strong>
+                                (NEXTORA, “we”, “us”, “our”) collects, uses, discloses, stores, and protects Personal
                                 Data
-                                when you access or use <strong>brif.my</strong> (“Website”) or purchase our
+                                when you access or use <strong>nextora.my</strong> (“Website”) or purchase our
                                 products and/or services.
                             </p>
                             <p>
@@ -283,8 +282,8 @@
                     <div class="mt-16 pt-8 border-t border-gray-100">
                         <p class="text-sm text-gray-500">
                             If you have any questions about this Privacy Policy, please contact us at
-                            <a href="mailto:cs@brinnovatefuture.com" class="text-[#8f6a10] font-bold hover:underline">
-                                cs@brinnovatefuture.com
+                            <a href="mailto:nextoraone@gmail.com" class="text-[#8f6a10] font-bold hover:underline">
+                                nextoraone@gmail.com
                             </a>.
                         </p>
                     </div>

@@ -116,7 +116,7 @@
                                 Step One</div>
                             <h3 class="text-3xl font-black text-gray-900 mb-4 tracking-tight">Create Your Account</h3>
                             <p class="text-gray-500 text-lg leading-relaxed">
-                                Join <span class="text-gray-900 font-bold">brif.my</span> and activate your rewards
+                                Join <span class="text-gray-900 font-bold">nextora.my</span> and activate your rewards
                                 wallet instantly.
                                 Your account is ready to start earning from your very first purchase.
                             </p>
