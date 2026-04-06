@@ -25,10 +25,10 @@
 
                 {{-- LEFT IMAGE PANEL (same as user) --}}
                 <div class="lg:col-span-5 xl:col-span-5 h-full hidden lg:block">
-                    <div class="relative h-full overflow-hidden bg-[#e3b749]">
-                        <img src="{{ asset('images/nextora-logo.png') }}"
-                            class="absolute inset-0 w-full h-full object-contain p-16"
-                            onerror="this.style.display='none'; document.getElementById('admin-placeholder').style.display='flex';" />
+                    <div class="relative h-full overflow-hidden">
+                        <img src="{{ asset('images/admin-login.png') }}"
+                            onerror="this.style.display='none'; document.getElementById('admin-placeholder').style.display='flex';"
+                            alt="Admin visual" class="absolute inset-0 w-full h-full object-cover" />
 
                         <div id="admin-placeholder"
                             class="hidden absolute inset-0 items-center justify-center

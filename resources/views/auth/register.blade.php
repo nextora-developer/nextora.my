@@ -2,97 +2,136 @@
     <div class="min-h-screen w-full grid grid-cols-1 lg:grid-cols-12 font-sans antialiased">
 
         {{-- LEFT PANEL --}}
-        <div class="hidden lg:flex lg:col-span-5 relative overflow-hidden">
-            {{-- ULTRA-PREMIUM METALLIC GRADIENT --}}
-            <div
-                class="absolute inset-0 bg-[conic-gradient(from_225deg_at_50%_50%,#8f6a10_0%,#D4AF37_25%,#E6C363_50%,#D4AF37_75%,#8f6a10_100%)]">
+        <div class="hidden lg:flex lg:col-span-5 relative overflow-hidden bg-[#0A0A0A]">
+            {{-- LAYER 1: DYNAMIC MESH BACKGROUND --}}
+            <div class="absolute inset-0 transition-opacity duration-1000">
+                <div
+                    class="absolute inset-0 bg-[conic-gradient(from_225deg_at_50%_50%,#8f6a10_0%,#D4AF37_25%,#E6C363_50%,#D4AF37_75%,#8f6a10_100%)] opacity-90">
+                </div>
+                {{-- Secondary deep gold glow for depth --}}
+                <div
+                    class="absolute top-0 right-0 w-[600px] h-[600px] bg-[#B8860B] rounded-full blur-[120px] opacity-60 mix-blend-multiply animate-pulse">
+                </div>
             </div>
 
-            {{-- ANIMATED LIGHT LEAKS --}}
-            <div class="absolute -top-24 -left-24 w-96 h-96 bg-white/30 rounded-full blur-[100px] animate-pulse"></div>
-            <div
-                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.2)_100%)]">
-            </div>
+            {{-- LAYER 2: NOISE & TEXTURE --}}
+            <div class="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none"
+                style="background-image: url('https://grainy-gradients.vercel.app/noise.svg');"></div>
 
-            {{-- SUBTLE GRID PATTERN (Modern SaaS Aesthetic) --}}
-            <div class="absolute inset-0 opacity-[0.15]"
-                style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 40px 40px;"></div>
+            {{-- LAYER 3: MODERN DOT GRID --}}
+            <div class="absolute inset-0 opacity-[0.1]"
+                style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;">
+            </div>
 
             {{-- CONTENT CONTAINER --}}
-            <div class="relative z-10 flex flex-col justify-between w-full h-full p-16 text-white">
+            <div class="relative z-10 flex flex-col justify-between w-full h-full p-20 text-white">
 
                 {{-- TOP: LOGO SECTION --}}
-                <div>
-                    <div class="flex items-center gap-4 group cursor-default">
-                        <div class="relative">
-                            {{-- Logo Glow --}}
-                            <div
-                                class="absolute inset-0 bg-white blur-xl opacity-20 group-hover:opacity-40 transition-opacity">
-                            </div>
+                <div class="flex items-center gap-5 group cursor-default">
+                    <div class="relative">
+                        {{-- Refined Logo Glow --}}
+                        <div
+                            class="absolute -inset-4 bg-white/20 blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700">
+                        </div>
+
+                        <div
+                            class="relative h-16 w-16 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-2.5 shadow-2xl transition-all duration-500 group-hover:scale-105 group-hover:rotate-[-2deg]">
                             <img src="{{ asset('images/nextora-logo.png') }}"
-                                class="relative h-20 w-20 rounded-2xl bg-white p-1.5 shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
-                                onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';">
-                            <div id="logo-fallback"
-                                class="hidden relative h-12 w-12 rounded-2xl bg-white text-[#D4AF37] items-center justify-center font-black shadow-xl">
-                                N
-                            </div>
+                                class="h-full w-full object-contain filter drop-shadow-md"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div
+                                class="hidden h-full w-full items-center justify-center font-black text-white text-2xl">
+                                N</div>
                         </div>
-                        <span class="text-lg font-black tracking-[0.5em] uppercase text-white/90">
-                            nextora<span class="text-white/40 group-hover:text-white/100 transition-colors">.my</span>
-                        </span>
                     </div>
-
-                    {{-- MAIN TEXT SECTION --}}
-                    <div class="mt-24 relative">
-                        <h1 class="text-6xl font-black leading-[1.1] tracking-tight max-w-sm">
-                            Master your <br>
-                            <span
-                                class="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60">Commerce.</span>
-                        </h1>
-
-                        <div class="mt-8 flex items-center gap-4">
-                            <div class="w-16 h-1 bg-white rounded-full"></div>
-                            <div class="w-2 h-1 bg-white/40 rounded-full"></div>
-                            <div class="w-1 h-1 bg-white/20 rounded-full"></div>
-                        </div>
-
-                        <p class="mt-8 text-white/80 text-lg max-w-md leading-relaxed font-medium">
-                            Experience the gold standard of e-commerce management with our precision-engineered
-                            dashboard.
-                        </p>
+                    <div class="flex flex-col">
+                        <span class="text-xl font-black tracking-[0.4em] uppercase leading-none">Nextora</span>
+                        <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-white/40 mt-1">E-Commerce
+                            Intelligence</span>
                     </div>
                 </div>
 
-                {{-- BOTTOM: FLOATING DECORATIVE CARD (Glassmorphism) --}}
-                <div class="relative mt-auto pt-10">
-                    <div class="absolute -top-20 left-10 w-64 h-64 bg-[#E6C363] rounded-full blur-[80px] opacity-20">
+                {{-- MAIN TEXT SECTION --}}
+                <div class="relative">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-8">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                        </span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-white/90">System Status:
+                            Active</span>
+                    </div>
+
+                    <h1 class="text-7xl font-black leading-[0.95] tracking-tighter">
+                        Master your <br>
+                        <span
+                            class="text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/40">Commerce.</span>
+                    </h1>
+
+                    <p class="mt-8 text-white/70 text-lg max-w-sm leading-relaxed font-light">
+                        Experience the <span class="text-white font-semibold">gold standard</span> of management with
+                        our precision-engineered dashboard.
+                    </p>
+
+                    {{-- Aesthetic Divider --}}
+                    <div class="mt-10 flex items-center gap-3">
+                        <div class="h-[1px] w-20 bg-gradient-to-r from-white to-transparent"></div>
+                        <div class="h-1 w-1 rounded-full bg-white/40"></div>
+                    </div>
+                </div>
+
+                {{-- BOTTOM: DATA VISUALIZATION CARD --}}
+                <div class="relative group/card">
+                    {{-- Background Aura --}}
+                    <div
+                        class="absolute -inset-10 bg-[#E6C363] rounded-full blur-[100px] opacity-0 group-hover/card:opacity-20 transition-opacity duration-1000">
                     </div>
 
                     <div
-                        class="relative overflow-hidden backdrop-blur-xl bg-white/10 border border-white/20 rounded-[2.5rem] p-8 shadow-2xl transform hover:-translate-y-2 transition-transform duration-700">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="h-10 w-10 rounded-full bg-white/20 flex items-center justify-center">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <div class="text-xs font-bold uppercase tracking-widest opacity-60">Real-time Analytics
+                        class="relative overflow-hidden backdrop-blur-2xl bg-white/[0.08] border border-white/20 rounded-[2.5rem] p-8 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.3)] transition-all duration-700 hover:bg-white/[0.12] hover:-translate-y-3">
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="h-12 w-12 rounded-xl bg-white text-[#D4AF37] flex items-center justify-center shadow-lg transform transition-transform group-hover/card:rotate-12">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                    </svg>
                                 </div>
-                                <div class="text-lg font-bold">+24.8% Revenue</div>
+                                <div>
+                                    <div class="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+                                        Performance Score</div>
+                                    <div class="text-xl font-black text-white">+24.8% <span
+                                            class="text-xs font-medium text-white/60 ml-1">vs last month</span></div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="flex items-end gap-2 h-12">
-                            <div class="flex-1 bg-white/20 rounded-t-sm h-[40%] animate-pulse"></div>
-                            <div class="flex-1 bg-white/40 rounded-t-sm h-[60%]"></div>
-                            <div class="flex-1 bg-white/20 rounded-t-sm h-[30%] animate-pulse"
-                                style="animation-delay: 0.2s"></div>
-                            <div class="flex-1 bg-white/60 rounded-t-sm h-[80%]"></div>
-                            <div class="flex-1 bg-white/30 rounded-t-sm h-[50%] animate-pulse"
-                                style="animation-delay: 0.4s"></div>
-                            <div class="flex-1 bg-white/10 rounded-t-sm h-[90%]"></div>
+                        {{-- Modernized Sparkline --}}
+                        <div class="flex items-end gap-1.5 h-16">
+                            <div
+                                class="flex-1 bg-white/10 rounded-full h-[30%] transition-all duration-1000 group-hover/card:h-[50%]">
+                            </div>
+                            <div
+                                class="flex-1 bg-white/20 rounded-full h-[50%] transition-all duration-1000 group-hover/card:h-[80%]">
+                            </div>
+                            <div
+                                class="flex-1 bg-white/40 rounded-full h-[70%] transition-all duration-1000 group-hover/card:h-[40%]">
+                            </div>
+                            <div
+                                class="flex-1 bg-white/10 rounded-full h-[40%] transition-all duration-1000 group-hover/card:h-[90%]">
+                            </div>
+                            <div
+                                class="flex-1 bg-white/60 rounded-full h-[90%] transition-all duration-1000 group-hover/card:h-[60%]">
+                            </div>
+                            <div
+                                class="flex-1 bg-white/30 rounded-full h-[60%] transition-all duration-1000 group-hover/card:h-[100%]">
+                            </div>
+                            <div
+                                class="flex-1 bg-white/20 rounded-full h-[40%] transition-all duration-1000 group-hover/card:h-[70%]">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -175,8 +214,8 @@
                         <div class="space-y-1">
                             <label
                                 class="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Password</label>
-                            <input id="password" type="password" name="password" required autocomplete="new-password"
-                                placeholder="••••••••"
+                            <input id="password" type="password" name="password" required
+                                autocomplete="new-password" placeholder="••••••••"
                                 class="w-full h-14 px-6 rounded-2xl bg-white border-2 border-gray-100 
                                        focus:border-[#D4AF37] focus:ring-0 outline-none transition-all duration-300
                                        placeholder:text-gray-300 shadow-sm">

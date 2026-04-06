@@ -325,7 +325,7 @@
                                 <span class="text-xs font-black uppercase tracking-widest text-gray-400">Support
                                     Line</span>
                             </div>
-                            <div class="text-xl font-bold text-gray-900">012-301 1610</div>
+                            <div class="text-xl font-bold text-gray-900">018-222-2507</div>
                             <p class="mt-2 text-sm text-gray-500 font-medium">Verified WhatsApp for support & agent
                                 verification identity.</p>
                         </div>
@@ -368,7 +368,7 @@
                                 </div>
 
                                 <div class="text-2xl font-mono font-bold text-gray-900 tracking-tighter mt-5">
-                                    514280900032</div>
+                                    00000000000000</div>
                             </div>
                         </div>
 

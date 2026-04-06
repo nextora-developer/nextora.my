@@ -28,16 +28,31 @@ class ShopController extends Controller
             ->orderBy('name')
             ->get();
 
-        // ✅ New Arrivals (latest)
-        $featured = Product::query()
+        $featuredQuery = Product::query()
             ->where('is_active', true)
             ->withMin('variants', 'price')
-            ->with(['category', 'variants']) // 你前端有用到 $product->category / variants
+            ->with(['category', 'variants']);
+
+        if (request('category')) {
+            $selectedCategory = Category::where('slug', request('category'))
+                ->where('is_active', true)
+                ->with('children:id,parent_id')
+                ->first();
+
+            if ($selectedCategory) {
+                $categoryIds = collect([$selectedCategory->id])
+                    ->merge($selectedCategory->children->pluck('id'))
+                    ->all();
+
+                $featuredQuery->whereIn('category_id', $categoryIds);
+            }
+        }
+
+        $featured = $featuredQuery
             ->latest()
             ->limit(10)
             ->get();
 
-        // ✅ Popular (by sales)
         $popular = Product::query()
             ->where('is_active', true)
             ->withMin('variants', 'price')

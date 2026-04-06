@@ -1,267 +1,549 @@
 <x-app-layout>
-    <div class="bg-[#F9F7F2]">
-
-        <div class="relative overflow-hidden">
-            <div class="relative z-10">
-
-                {{-- =========================
-                HERO / BANNER SECTION
-            ========================== --}}
-                <section class="w-full relative z-0" data-banner-slider>
-                    <div class="max-w-7xl5 mx-auto px-4 sm:px-6 lg:px-8 pt-6 lg:pt-8 pb-8 lg:pb-10">
-
-                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-stretch">
-
-                            {{-- Main Banner --}}
-                            <div class="lg:col-span-8">
-                                <div
-                                    class="relative overflow-hidden rounded-[2rem] bg-neutral-100 border border-neutral-200 shadow-sm">
-
-                                    @if (isset($banners) && $banners->count())
-                                        <div
-                                            class="relative w-full aspect-[16/10] sm:aspect-[16/8] lg:h-[520px] lg:aspect-auto">
-                                            <div class="absolute inset-0 flex h-full transition-transform duration-700 ease-out"
-                                                data-banner-track>
-                                                @foreach ($banners as $banner)
-                                                    @php
-                                                        $url = $banner->link_url ?: route('shop.index');
-                                                    @endphp
-
-                                                    <a href="{{ $url }}"
-                                                        class="relative w-full h-full shrink-0 block group">
-                                                        <img src="{{ asset('storage/' . $banner->image_path) }}"
-                                                            alt="Banner"
-                                                            class="w-full h-full object-cover object-center block transition duration-700 group-hover:scale-[1.02]">
-
-                                                        {{-- overlay --}}
-                                                        <div
-                                                            class="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent">
-                                                        </div>
+    <div class="bg-[#f8f5ef] text-[#1a1a1a]">
 
 
-                                                    </a>
-                                                @endforeach
-                                            </div>
+        <!-- Hero Banner -->
+        <section class="w-full relative z-0 bg-gradient-to-r from-[#fffaf0] via-[#f8f1df] to-[#f1e1b8]"
+            data-banner-slider>
+            <div class="max-w-7xl5 mx-auto px-4 sm:px-6 lg:px-8 pt-6 lg:pt-16 pb-8 lg:pb-16">
 
-                                            @if ($banners->count() > 1)
-                                                {{-- arrows --}}
-                                                <button type="button"
-                                                    class="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-neutral-900 items-center justify-center shadow-sm transition"
-                                                    data-banner-prev>
-                                                    ‹
-                                                </button>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-stretch">
 
-                                                <button type="button"
-                                                    class="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-neutral-900 items-center justify-center shadow-sm transition"
-                                                    data-banner-next>
-                                                    ›
-                                                </button>
+                    {{-- Main Banner --}}
+                    <div class="lg:col-span-8">
+                        <div
+                            class="relative overflow-hidden rounded-[2rem] bg-neutral-100 border border-neutral-200 shadow-sm">
 
-                                                {{-- dots --}}
-                                                <div class="absolute bottom-5 left-0 right-0 flex justify-center gap-2"
-                                                    data-banner-dots>
-                                                    @foreach ($banners as $index => $banner)
-                                                        <button type="button"
-                                                            class="w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition"
-                                                            data-banner-dot="{{ $index }}"></button>
-                                                    @endforeach
+                            @if (isset($banners) && $banners->count())
+                                <div class="relative w-full aspect-[16/10] sm:aspect-[16/8] lg:h-[520px] lg:aspect-auto">
+                                    <div class="absolute inset-0 flex h-full transition-transform duration-700 ease-out"
+                                        data-banner-track>
+                                        @foreach ($banners as $banner)
+                                            @php
+                                                $url = $banner->link_url ?: route('shop.index');
+                                            @endphp
+
+                                            <a href="{{ $url }}"
+                                                class="relative w-full h-full shrink-0 block group">
+                                                <img src="{{ asset('storage/' . $banner->image_path) }}" alt="Banner"
+                                                    class="w-full h-full object-cover object-center block transition duration-700 group-hover:scale-[1.02]">
+
+                                                {{-- overlay --}}
+                                                <div
+                                                    class="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent">
                                                 </div>
-                                            @endif
-                                        </div>
-                                    @else
-                                        <div
-                                            class="w-full aspect-[16/10] sm:aspect-[16/8] lg:h-[520px] lg:aspect-auto bg-neutral-100 flex items-center justify-center">
-                                            <p class="text-neutral-400 text-sm">Shop Banner coming soon</p>
+
+
+                                            </a>
+                                        @endforeach
+                                    </div>
+
+                                    @if ($banners->count() > 1)
+                                        {{-- arrows --}}
+                                        <button type="button"
+                                            class="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-neutral-900 items-center justify-center shadow-sm transition"
+                                            data-banner-prev>
+                                            ‹
+                                        </button>
+
+                                        <button type="button"
+                                            class="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 hover:bg-white text-neutral-900 items-center justify-center shadow-sm transition"
+                                            data-banner-next>
+                                            ›
+                                        </button>
+
+                                        {{-- dots --}}
+                                        <div class="absolute bottom-5 left-0 right-0 flex justify-center gap-2"
+                                            data-banner-dots>
+                                            @foreach ($banners as $index => $banner)
+                                                <button type="button"
+                                                    class="w-8 h-1.5 rounded-full bg-white/40 hover:bg-white/70 transition-all duration-300"
+                                                    data-banner-dot="{{ $index }}"
+                                                    aria-label="Go to slide {{ $index + 1 }}"></button>
+                                            @endforeach
                                         </div>
                                     @endif
-
                                 </div>
-                            </div>
-
-                            {{-- Side Promo Cards --}}
-                            <div class="lg:col-span-4">
-                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-6 h-full">
-
-                                    <a href="{{ route('web-development') }}"
-                                        class="group relative overflow-hidden rounded-[2rem] border border-neutral-200 bg-neutral-50 min-h-[180px] lg:min-h-[248px] p-6 flex flex-col justify-between transition hover:shadow-md">
-
-                                        <div>
-                                            <span
-                                                class="text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-500">
-                                                Our Service
-                                            </span>
-
-                                            <h3 class="mt-3 text-xl font-bold tracking-tight text-neutral-900">
-                                                Web Development
-                                            </h3>
-
-                                            <p class="mt-2 text-sm text-neutral-500 max-w-xs">
-                                                Build modern, high-performing websites tailored to your business goals.
-                                            </p>
-                                        </div>
-
-                                        <div class="flex items-center justify-between">
-                                            <span class="text-sm font-semibold text-neutral-900">View Service</span>
-                                            <span
-                                                class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900 text-white transition group-hover:translate-x-1">
-                                                →
-                                            </span>
-                                        </div>
-                                    </a>
-
-                                    <a href="{{ route('vouchers.index') }}"
-                                        class="group relative overflow-hidden rounded-[2rem]
-           border border-[#D4AF37]/20
-           bg-gradient-to-br from-[#0F0F0F] to-[#1A1A1A]
-           min-h-[180px] lg:min-h-[248px]
-           p-6 flex flex-col justify-between
-           transition-all duration-300
-           hover:shadow-xl hover:shadow-black/20 hover:-translate-y-1
-           hover:border-[#D4AF37]/40">
-
-                                        {{-- subtle glow --}}
-                                        <div
-                                            class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500
-                bg-gradient-to-tr from-[#D4AF37]/10 via-transparent to-transparent">
-                                        </div>
-
-                                        <div class="relative z-10">
-                                            <span
-                                                class="text-[11px] font-semibold uppercase tracking-[0.18em]
-                   text-[#D4AF37]/80">
-                                                Save More
-                                            </span>
-
-                                            <h3 class="mt-3 text-xl font-bold tracking-tight text-white">
-                                                Voucher Deals
-                                            </h3>
-
-                                            <p class="mt-2 text-sm text-white/70 max-w-xs">
-                                                Unlock exclusive savings and seasonal offers in one place.
-                                            </p>
-                                        </div>
-
-                                        <div class="relative z-10 flex items-center justify-between">
-                                            <span
-                                                class="text-sm font-semibold text-white group-hover:text-[#D4AF37] transition">
-                                                View Vouchers
-                                            </span>
-
-                                            <span
-                                                class="inline-flex h-10 w-10 items-center justify-center rounded-full
-                   bg-white text-neutral-900
-                   transition-all duration-300
-                   group-hover:bg-[#D4AF37] group-hover:text-white
-                   group-hover:translate-x-1">
-                                                →
-                                            </span>
-                                        </div>
-                                    </a>
-
+                            @else
+                                <div
+                                    class="w-full aspect-[16/10] sm:aspect-[16/8] lg:h-[520px] lg:aspect-auto bg-neutral-100 flex items-center justify-center">
+                                    <p class="text-neutral-400 text-sm">Shop Banner coming soon</p>
                                 </div>
-                            </div>
+                            @endif
 
                         </div>
                     </div>
-                </section>
 
-                {{-- =========================
-                CATEGORY SECTION
-            ========================== --}}
-                <section id="categories" class="relative scroll-mt-40 pt-1 pb-6 lg:pb-8">
-                    <div class="mx-auto max-w-7xl5 px-4 sm:px-6 lg:px-8">
+                    {{-- Side Promo Cards --}}
+                    <div class="lg:col-span-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-5 lg:gap-6 h-full">
 
-                        @if (isset($categories) && $categories->count())
+                            <a href="{{ route('web-development') }}"
+                                class="group relative overflow-hidden rounded-[2.5rem] border border-neutral-200/60 bg-white min-h-[180px] lg:min-h-[248px] p-8 flex flex-col justify-between transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.05)] hover:-translate-y-1">
 
-                            <div class="mb-5 flex items-end justify-between gap-4">
-                                <div>
-                                    <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#B8922E]">
-                                        Shop by Category
+                                {{-- Decorative background element --}}
+                                <div
+                                    class="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-neutral-50 transition-transform duration-700 group-hover:scale-[2.5]">
+                                </div>
+
+                                <div class="relative z-10">
+                                    <span
+                                        class="inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-amber-600/80 bg-amber-50 px-3 py-1 rounded-full">
+                                        Our Expertise
+                                    </span>
+
+                                    <h3
+                                        class="mt-4 text-2xl font-bold tracking-tight text-neutral-900 group-hover:text-amber-600 transition-colors duration-300">
+                                        Web Development
+                                    </h3>
+
+                                    <p class="mt-2 text-sm leading-relaxed text-neutral-500 max-w-[240px]">
+                                        Build modern, high-performing websites tailored to your unique business goals.
                                     </p>
-                                    <h2 class="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900">
-                                        Browse what fits your lifestyle
-                                    </h2>
                                 </div>
 
-                                <a href="{{ route('shop.index') }}"
-                                    class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-[#8f6a10] hover:text-[#6f5206] transition">
-                                    View all
-                                    <span>→</span>
-                                </a>
-                            </div>
-
-                            <div class="overflow-x-auto scrollbar-hide" data-scroll-x>
-                                <div class="flex gap-4 min-w-max pb-2">
-
-                                    @foreach ($categories as $category)
-                                        <a href="{{ route('shop.index', ['category' => $category->slug]) }}"
-                                            class="group block w-[160px] sm:w-[180px] lg:w-[190px] shrink-0">
-
-                                            <div
-                                                class="rounded-[2rem]
-                                       border border-[#D4AF37]/15
-                                       bg-white
-                                       overflow-hidden
-                                       shadow-[0_6px_18px_rgba(0,0,0,0.04)]
-                                       transition-all duration-300
-                                       hover:-translate-y-1
-                                       hover:shadow-[0_14px_32px_rgba(0,0,0,0.08)]
-                                       hover:border-[#D4AF37]/40">
-
-                                                <div class="aspect-[4/4] bg-[#FBFAF7] overflow-hidden">
-                                                    @if ($category->icon)
-                                                        <img src="{{ asset('storage/' . $category->icon) }}"
-                                                            alt="{{ $category->name }}"
-                                                            class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                                                    @else
-                                                        <div class="w-full h-full flex items-center justify-center">
-                                                            <span
-                                                                class="text-[11px] text-neutral-300 font-semibold uppercase tracking-[0.18em]">
-                                                                No Image
-                                                            </span>
-                                                        </div>
-                                                    @endif
-                                                </div>
-
-                                                <div class="p-4">
-                                                    <div class="flex items-center justify-between gap-3">
-                                                        <span
-                                                            class="text-sm font-semibold tracking-tight text-neutral-900 line-clamp-1
-                                                   group-hover:text-[#8f6a10] transition-colors">
-                                                            {{ $category->name }}
-                                                        </span>
-
-                                                        <span
-                                                            class="inline-flex h-8 w-8 items-center justify-center rounded-full
-                                                   bg-[#F6F1E4] text-[#8f6a10]
-                                                   transition-all duration-300
-                                                   group-hover:bg-[#D4AF37] group-hover:text-white">
-                                                            →
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    @endforeach
-
+                                <div class="relative z-10 flex items-center justify-between">
+                                    <span
+                                        class="text-xs font-bold uppercase tracking-widest text-neutral-900 group-hover:mr-2 transition-all">Explore
+                                        Service</span>
+                                    <div
+                                        class="flex h-11 w-11 items-center justify-center rounded-full bg-neutral-900 text-white shadow-lg transition-all duration-300 group-hover:bg-amber-600 group-hover:rotate-[-45deg]">
+                                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
 
+                            <a href="{{ route('vouchers.index') }}"
+                                class="group relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0A0A0A] min-h-[180px] lg:min-h-[248px] p-8 flex flex-col justify-between transition-all duration-500 hover:shadow-[0_20px_50px_rgba(156,116,20,0.15)] hover:-translate-y-1">
+
+                                {{-- Gradient Glow Overlay --}}
+                                <div
+                                    class="absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500 bg-[radial-gradient(circle_at_top_right,#D4AF37_0%,transparent_60%)]">
+                                </div>
+
+                                {{-- Grid Pattern --}}
+                                <div class="absolute inset-0 opacity-[0.03] [mask-image:linear-gradient(white,transparent)]"
+                                    style="background-image: radial-gradient(#fff 0.5px, transparent 0.5px); background-size: 24px 24px;">
+                                </div>
+
+                                <div class="relative z-10">
+                                    <span
+                                        class="inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-[#D4AF37] border border-[#D4AF37]/30 px-3 py-1 rounded-full">
+                                        Limited Access
+                                    </span>
+
+                                    <h3
+                                        class="mt-4 text-2xl font-bold tracking-tight text-white group-hover:text-[#E7C76A] transition-colors duration-300">
+                                        Exclusive Vouchers
+                                    </h3>
+
+                                    <p class="mt-2 text-sm leading-relaxed text-neutral-400 max-w-[240px]">
+                                        Unlock seasonal offers and premium savings curated for our members.
+                                    </p>
+                                </div>
+
+                                <div class="relative z-10 flex items-center justify-between">
+                                    <span
+                                        class="text-xs font-bold uppercase tracking-widest text-white group-hover:text-[#D4AF37] transition-all">View
+                                        Deals</span>
+                                    <div
+                                        class="flex h-11 w-11 items-center justify-center rounded-full bg-[#D4AF37] text-white shadow-[0_0_20px_rgba(212,175,55,0.3)] transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E7C76A]">
+                                        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Bar -->
+        <section class="bg-white border-b border-neutral-100">
+            <div class="max-w-7xl5 mx-auto px-6 py-10">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
+
+                    <div
+                        class="group flex items-center lg:justify-center gap-4 lg:border-r lg:border-neutral-100 last:border-0 transition-all duration-300">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 rounded-2xl bg-neutral-50 flex items-center justify-center group-hover:bg-amber-50 transition-colors">
+                            <svg class="w-6 h-6 text-neutral-800 group-hover:text-amber-600 transition-colors"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-[13px] font-bold uppercase tracking-widest text-neutral-900">Authentic
+                                Quality</h4>
+                            <p class="text-sm text-neutral-500 mt-0.5">Handpicked premium selection</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="group flex items-center lg:justify-center gap-4 lg:border-r lg:border-neutral-100 last:border-0 transition-all duration-300">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 rounded-2xl bg-neutral-50 flex items-center justify-center group-hover:bg-amber-50 transition-colors">
+                            <svg class="w-6 h-6 text-neutral-800 group-hover:text-amber-600 transition-colors"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-[13px] font-bold uppercase tracking-widest text-neutral-900">Fast Delivery
+                            </h4>
+                            <p class="text-sm text-neutral-500 mt-0.5">Nationwide tracked shipping</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="group flex items-center lg:justify-center gap-4 lg:border-r lg:border-neutral-100 last:border-0 transition-all duration-300">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 rounded-2xl bg-neutral-50 flex items-center justify-center group-hover:bg-amber-50 transition-colors">
+                            <svg class="w-6 h-6 text-neutral-800 group-hover:text-amber-600 transition-colors"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-[13px] font-bold uppercase tracking-widest text-neutral-900">Secure Payment
+                            </h4>
+                            <p class="text-sm text-neutral-500 mt-0.5">SSL encrypted transactions</p>
+                        </div>
+                    </div>
+
+                    <div class="group flex items-center lg:justify-center gap-4 transition-all duration-300">
+                        <div
+                            class="flex-shrink-0 w-12 h-12 rounded-2xl bg-neutral-50 flex items-center justify-center group-hover:bg-amber-50 transition-colors">
+                            <svg class="w-6 h-6 text-neutral-800 group-hover:text-amber-600 transition-colors"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h4 class="text-[13px] font-bold uppercase tracking-widest text-neutral-900">Easy Returns
+                            </h4>
+                            <p class="text-sm text-neutral-500 mt-0.5">30-day money back guarantee</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Category -->
+        <section id="categories" class="py-16 lg:py-20">
+            <div class="max-w-7xl5 mx-auto px-4 sm:px-6 lg:px-8">
+
+                @if (isset($categories) && $categories->count())
+
+                    <div class="flex items-end justify-between gap-4 mb-8">
+                        <div>
+                            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#b99139]">
+                                Shop by Category
+                            </p>
+                            <h2 class="mt-2 text-3xl lg:text-4xl font-black text-[#111111]">
+                                Find your signature style
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div x-data="{ expanded: false, isMobile: window.innerWidth < 768 }" x-init="window.addEventListener('resize', () => isMobile = window.innerWidth < 768)">
+
+                        <div class="grid grid-cols-2 lg:grid-cols-5 gap-5">
+                            @foreach ($categories as $index => $category)
+                                <div x-show="expanded || {{ $index }} < (isMobile ? 4 : 5)"
+                                    x-transition.opacity.duration.300ms>
+                                    <a href="{{ route('shop.index', ['category' => $category->slug]) }}"
+                                        class="group block rounded-[1.75rem] overflow-hidden border border-[#eadfc8] bg-white shadow-sm hover:shadow-xl transition duration-300">
+
+                                        <div class="aspect-square overflow-hidden bg-[#FBFAF7]">
+                                            @if ($category->icon)
+                                                <img src="{{ asset('storage/' . $category->icon) }}"
+                                                    alt="{{ $category->name }}"
+                                                    class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                                            @else
+                                                <div class="w-full h-full flex items-center justify-center">
+                                                    <span
+                                                        class="text-[11px] text-neutral-300 font-semibold uppercase tracking-[0.18em]">
+                                                        No Image
+                                                    </span>
+                                                </div>
+                                            @endif
+                                        </div>
+
+                                        <div class="p-5">
+                                            <p class="text-lg font-bold text-[#111111] line-clamp-1">
+                                                {{ $category->name }}
+                                            </p>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        @if ($categories->count() > 10)
+                            <div class="mt-10 flex justify-center">
+                                <button @click="expanded = !expanded"
+                                    class="inline-flex items-center gap-2 rounded-full border border-[#e2d4af] bg-[#fffdf8] px-6 py-3 text-sm font-semibold text-[#6f5b28] hover:bg-[#111111] hover:text-white hover:border-[#111111] transition-all duration-300">
+                                    <span x-show="!expanded">View More</span>
+                                    <span x-show="expanded">Show Less</span>
+                                    <span x-show="!expanded">↓</span>
+                                    <span x-show="expanded">↑</span>
+                                </button>
+                            </div>
                         @endif
                     </div>
-                </section>
+
+                @endif
 
             </div>
-        </div>
+        </section>
 
-        {{-- Partials --}}
-        @include('shop.partials.new-arrivals')
-        @include('shop.partials.popular-product')
-        @include('shop.partials.reviews')
-        @include('shop.partials.voucher-promo')
-        @include('shop.partials.trust-value')
-        @include('shop.partials.bottom-cta')
-        {{-- @include('shop.partials.payment-methods') --}}
+        <!-- Featured Products -->
+        <section id="featured-products" class="py-16 lg:py-20 bg-white border-y border-[#eee2ca]">
+            <div class="max-w-7xl5 mx-auto px-4 sm:px-6 lg:px-8">
+
+                {{-- Header --}}
+                <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-8">
+                    <div>
+                        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#b99139]">
+                            Featured Products
+                        </p>
+                        <h2 class="mt-2 text-3xl lg:text-4xl font-black text-[#111111]">
+                            Best sellers this week
+                        </h2>
+                    </div>
+
+                    {{-- (optional future filter) --}}
+                    <div x-data="{ expanded: false }" class="flex flex-wrap gap-3 text-sm">
+
+                        {{-- All --}}
+                        <a href="{{ route('home') }}"
+                            class="rounded-full px-5 py-2 font-semibold {{ !request('category') ? 'bg-[#111111] text-white' : 'border border-[#e2d4af] bg-[#fffdf8] text-[#6f5b28]' }}">
+                            All
+                        </a>
+
+                        {{-- Categories --}}
+                        @foreach ($categories as $index => $category)
+                            <template x-if="expanded || {{ $index }} < 3">
+                                <a href="{{ route('home', ['category' => $category->slug]) }}"
+                                    class="rounded-full px-5 py-2 font-semibold
+                                            {{ request('category') == $category->slug
+                                                ? 'bg-[#111111] text-white'
+                                                : 'border border-[#e2d4af] bg-[#fffdf8] text-[#6f5b28] hover:border-[#b99139]' }}">
+
+                                    {{ $category->name }}
+                                </a>
+                            </template>
+                        @endforeach
+
+                        {{-- More / Less --}}
+                        @if ($categories->count() > 6)
+                            <button @click="expanded = !expanded"
+                                class="rounded-full px-5 py-2 font-semibold border border-[#e2d4af] bg-[#fffdf8] text-[#6f5b28] hover:border-[#b99139]">
+
+                                <span x-show="!expanded">+ More</span>
+                                <span x-show="expanded">Less</span>
+                            </button>
+                        @endif
+
+                    </div>
+                </div>
+
+                @if ($featured->count())
+
+                    <div class="grid grid-cols-2 lg:grid-cols-5 gap-5 lg:gap-6">
+
+                        @foreach ($featured as $product)
+                            <div
+                                class="group relative overflow-hidden rounded-[1.75rem]
+                               border border-[#ebdfc9] bg-[#fffdfa]
+                               shadow-sm transition duration-300
+                               hover:-translate-y-1 hover:shadow-[0_25px_45px_rgba(0,0,0,0.10)]">
+
+                                {{-- Image --}}
+                                <a href="{{ route('shop.show', $product->slug) }}"
+                                    class="relative block aspect-square overflow-hidden">
+
+                                    @if ($product->image)
+                                        <img src="{{ asset('storage/' . $product->image) }}"
+                                            alt="{{ $product->name }}"
+                                            class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                                    @else
+                                        <div
+                                            class="w-full h-full flex items-center justify-center bg-neutral-100 text-[10px] uppercase text-neutral-400">
+                                            No Image
+                                        </div>
+                                    @endif
+
+                                    {{-- Tag (optional logic) --}}
+                                    <span
+                                        class="absolute left-4 top-4 rounded-full bg-[#111111]
+                                       px-3 py-1 text-xs font-semibold text-[#f5e7c1] shadow-lg">
+                                        Featured
+                                    </span>
+
+                                    {{-- Wishlist --}}
+                                    @auth
+                                        @php
+                                            $isFavorited = auth()
+                                                ->user()
+                                                ->favorites->contains('product_id', $product->id);
+                                        @endphp
+
+                                        <form
+                                            action="{{ $isFavorited ? route('account.favorites.destroy', $product) : route('account.favorites.store', $product) }}"
+                                            method="POST" class="absolute right-4 top-4">
+                                            @csrf
+                                            @if ($isFavorited)
+                                                @method('DELETE')
+                                            @endif
+
+                                            <button type="submit"
+                                                class="h-10 w-10 rounded-full bg-white/90 text-[#111111]
+                                               shadow hover:bg-[#b99139] hover:text-white transition">
+                                                ♡
+                                            </button>
+                                        </form>
+                                    @endauth
+
+                                </a>
+
+                                {{-- Content --}}
+                                <div class="p-5">
+                                    <p class="text-xs uppercase tracking-[0.18em] text-[#aa8740] font-semibold">
+                                        {{ $product->category->name ?? 'General' }}
+                                    </p>
+
+                                    <h3 class="mt-2 text-base font-bold text-[#111111] line-clamp-2">
+                                        {{ $product->name }}
+                                    </h3>
+
+                                    {{-- Price --}}
+                                    <div class="mt-3 flex items-center gap-2 text-sm">
+                                        <span class="font-black text-[#111111]">
+                                            @if ($product->has_variants && $product->variants->count())
+                                                @php
+                                                    $prices = $product->variants->pluck('price')->filter();
+                                                    $min = $prices->min();
+                                                    $max = $prices->max();
+                                                @endphp
+
+                                                @if ($min == $max)
+                                                    RM {{ number_format($min, 2) }}
+                                                @else
+                                                    RM {{ number_format($min, 2) }}
+                                                @endif
+                                            @elseif ($product->is_open_amount)
+                                                RM {{ number_format($product->min_amount ?? 1, 2) }}
+                                            @else
+                                                RM {{ number_format($product->price ?? 0, 2) }}
+                                            @endif
+                                        </span>
+                                    </div>
+
+                                    {{-- Footer --}}
+                                    <div
+                                        class="mt-5 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+
+                                        {{-- Fake rating --}}
+                                        <div class="flex text-[#b99139] text-sm">★★★★★</div>
+
+                                        <a href="{{ route('shop.show', $product->slug) }}"
+                                            class="rounded-full bg-[#b99139] px-4 py-2 text-xs font-semibold text-white hover:bg-[#111111] transition">
+                                            Add to Cart
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        @endforeach
+
+                    </div>
+
+                    <div class="mt-10 flex justify-center">
+                        <a href="{{ route('shop.index', request('category') ? ['category' => request('category')] : []) }}"
+                            class="inline-flex items-center gap-2 rounded-full
+                                border border-[#e2d4af] bg-[#fffdf8]
+                                px-6 py-3 text-sm font-semibold text-[#6f5b28]
+                                hover:bg-[#111111] hover:text-white hover:border-[#111111]
+                                transition-all duration-300">
+
+                            View More
+                            <span>→</span>
+                        </a>
+                    </div>
+                @else
+                    {{-- Empty --}}
+                    <div class="text-center py-16 text-neutral-500">
+                        No featured products yet.
+                    </div>
+                @endif
+
+            </div>
+        </section>
+
+        <!-- Promo Grid -->
+        <section class="py-16 lg:py-20">
+            <div class="max-w-7xl5 mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-6">
+                <div
+                    class="lg:col-span-2 rounded-[2rem] overflow-hidden border border-[#eadbb8] bg-gradient-to-r from-[#111111] to-[#2a2418] text-white p-8 lg:p-10 relative">
+                    <div
+                        class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(185,145,57,0.35),transparent_24%)]">
+                    </div>
+                    <div class="relative max-w-xl">
+                        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#f0d998]">Exclusive Campaign
+                        </p>
+                        <h3 class="mt-3 text-3xl lg:text-4xl font-black leading-tight">Mid Season Sale up to 40% off
+                            selected luxury essentials.</h3>
+                        <p class="mt-4 text-white/75 leading-7">Elevate your everyday with pieces designed to feel
+                            premium, elegant, and timeless.</p>
+                        <a href="{{ route('shop.index') }}"
+                            class="mt-6 inline-flex rounded-full bg-[#b99139] px-6 py-3 text-sm font-semibold text-white hover:bg-white hover:text-[#111111] transition">Shop
+                            Now</a>
+                    </div>
+                </div>
+
+                <div class="rounded-[2rem] border border-[#eadbb8] bg-white p-7 shadow-sm">
+                    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#b99139]">
+                        Rewards Program
+                    </p>
+
+                    <h3 class="mt-3 text-2xl font-black text-[#111111]">
+                        Earn Points Every Purchase
+                    </h3>
+
+                    <p class="mt-3 text-[#666] leading-7">
+                        Get rewarded when you shop. Earn points, refer friends, and unlock exclusive perks.
+                    </p>
+
+                    <ul class="mt-5 space-y-3 text-sm text-[#444]">
+                        <li>• Earn points on every order</li>
+                        <li>• Referral rewards when friends purchase</li>
+                        <li>• Redeem points for discounts & vouchers</li>
+                    </ul>
+
+                    <a href="{{ route('register') }}"
+                        class="mt-6 inline-flex rounded-full border border-[#111111] px-5 py-3 text-sm font-semibold text-[#111111] hover:bg-[#111111] hover:text-white transition">
+                        Join & Start Earning
+                    </a>
+                </div>
+            </div>
+        </section>
+
     </div>
 
     <script>
@@ -350,11 +632,11 @@
                 // 更新底部点
                 dots.forEach((dot, idx) => {
                     if (idx === index) {
-                        dot.classList.add('bg-white');
-                        dot.classList.remove('bg-white/40');
+                        dot.classList.add('bg-[#D4AF37]', 'w-12');
+                        dot.classList.remove('bg-white/40', 'w-8');
                     } else {
-                        dot.classList.remove('bg-white');
-                        dot.classList.add('bg-white/40');
+                        dot.classList.remove('bg-[#D4AF37]', 'w-12');
+                        dot.classList.add('bg-white/40', 'w-8');
                     }
                 });
             }
@@ -383,10 +665,13 @@
 
             // 点点点击
             dots.forEach((dot, idx) => {
-                dot.addEventListener('click', () => {
-                    goTo(idx);
-                    restartAuto();
-                });
+                if (idx === index) {
+                    dot.classList.add('bg-[#D4AF37]', 'w-12');
+                    dot.classList.remove('bg-white/40', 'w-8');
+                } else {
+                    dot.classList.remove('bg-[#D4AF37]', 'w-12');
+                    dot.classList.add('bg-white/40', 'w-8');
+                }
             });
 
             // Auto slide

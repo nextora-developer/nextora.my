@@ -525,6 +525,15 @@
                                                     </div>
                                                 @endif
 
+                                                 @if ($isHitpay)
+                                                    <div class="hidden sm:flex items-center gap-1 opacity-70">
+                                                        <div
+                                                            class="px-2 py-1 rounded bg-white border border-gray-100 text-[10px] font-bold text-blue-800">
+                                                            Payment Gateway
+                                                        </div>
+                                                    </div>
+                                                @endif
+
                                                 @if ($isCommercePay)
                                                     <div class="hidden sm:flex items-center gap-1 opacity-70">
                                                         <div
