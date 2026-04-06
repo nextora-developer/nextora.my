@@ -74,243 +74,183 @@
 
     {{-- Global Footer --}}
     <footer
-        class="relative overflow-hidden bg-black text-white border-t border-white/10
-        {{ $hasMobileTab ? 'pb-24 lg:pb-0' : '' }}">
-        {{-- Soft premium background glow --}}
-        <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute -top-32 -left-40 w-[520px] h-[520px] rounded-full bg-[#D4AF37]/10 blur-3xl"></div>
-            <div class="absolute -bottom-40 -right-40 w-[620px] h-[620px] rounded-full bg-white/5 blur-3xl"></div>
-            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent">
-            </div>
-        </div>
+        class="bg-[#111111] text-white pt-16 border-t border-[#1f1f1f] {{ $hasMobileTab ? 'pb-32 lg:pb-8' : 'pb-8' }}">
+        <div class="max-w-7xl5 mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div class="relative max-w-7xl5 mx-auto px-6 lg:px-12 py-16 lg:py-20">
+            <!-- Top Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
 
-            {{-- Top Grid --}}
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-y-12 lg:gap-y-0 lg:gap-x-12">
-
-                {{-- Brand --}}
-                <div class="lg:col-span-4">
-                    <div class="flex items-center mb-6">
-                        <div class="leading-tight">
-
-                            {{-- Brand --}}
-                            <div style="font-family: 'Cinzel', serif;"
-                                class="text-3xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-tr from-[#9C7414] via-[#E7C76A] to-[#D4AF37]">
-                                NEXTORA
-                            </div>
-
-                            {{-- Tagline --}}
-                            <div class="mt-1 text-[11px] tracking-[0.25em] text-neutral-400 uppercase">
-                                Your Vision, Our Creation
-                            </div>
-
-                        </div>
+                <!-- Brand -->
+                <div class="lg:col-span-2">
+                    {{-- Brand --}}
+                    <div style="font-family: 'Cinzel', serif;"
+                        class="text-3xl font-black uppercase tracking-tighter text-transparent bg-clip-text bg-gradient-to-tr from-[#9C7414] via-[#E7C76A] to-[#D4AF37]">
+                        NEXTORA
                     </div>
 
+                    {{-- Tagline --}}
+                    <div class="mt-1 text-[11px] tracking-[0.25em] text-neutral-400 uppercase">
+                        Your Vision, Our Creation
+                    </div>
 
-                    <p class="text-sm text-gray-300 leading-relaxed max-w-sm">
-                        Curating high-quality essentials for the modern Malaysian lifestyle.
-                        Excellence in every detail, delivered with care.
+                    <p class="mt-4 text-sm text-white/70 leading-7 max-w-md">
+                        A premium ecommerce experience crafted with elegance, simplicity,
+                        and a refined gold, white, and black identity. Discover curated
+                        products that elevate your everyday lifestyle.
                     </p>
 
-                    <div class="mt-6 space-y-3">
-                        <span
-                            class="inline-flex mb-1 items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] bg-white/5 border border-white/10 px-2 py-1 rounded-full">
-                            Secure Payment
-                        </span>
+                    <!-- Payment Methods -->
+                    <div class="mt-6">
+                        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
 
-                        {{-- Payment Methods --}}
-                        <div class="flex items-center gap-4 flex-wrap">
-                            <img src="/images/payments/fpx.png" alt="FPX" class="h-6" />
+                            <!-- Item -->
+                            <div
+                                class="bg-white border border-gray-200 rounded-lg flex items-center justify-center shadow-sm">
+                                <img src="/images/payments/fpx.png" alt="FPX" class="h-6 object-contain">
+                            </div>
 
-                            <img src="/images/payments/visa.png" alt="Visa" class="h-6" />
+                            <div
+                                class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center shadow-sm">
+                                <img src="/images/payments/visa.png" alt="Visa" class="h-6 object-contain">
+                            </div>
 
-                            <img src="/images/payments/mastercard.png" alt="Mastercard" class="h-6" />
+                            <div
+                                class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center shadow-sm">
+                                <img src="/images/payments/mastercard.png" alt="Mastercard" class="h-6 object-contain">
+                            </div>
 
-                            <img src="/images/payments/tng.png" alt="TNG" class="h-6" />
+                            <div
+                                class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center shadow-sm">
+                                <img src="/images/payments/tng.png" alt="Touch n Go" class="h-6 object-contain">
+                            </div>
 
-                            <img src="/images/payments/grabpay.png" alt="GRABPAY" class="h-6" />
+                            <div
+                                class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center shadow-sm">
+                                <img src="/images/payments/grabpay.png" alt="GrabPay" class="h-6 object-contain">
+                            </div>
 
-                            <img src="/images/payments/boost.png" alt="BOOST" class="h-6" />
+                            <div
+                                class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center shadow-sm">
+                                <img src="/images/payments/boost.png" alt="Boost" class="h-6 object-contain">
+                            </div>
 
-                            <img src="/images/payments/shopeepay.png" alt="SHOPEEPAY" class="h-6" />
+                            <div
+                                class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center shadow-sm">
+                                <img src="/images/payments/shopeepay.png" alt="ShopeePay" class="h-6 object-contain">
+                            </div>
 
-                            <img src="/images/payments/alipay.png" alt="ALIPAY" class="h-6" />
+                            <div
+                                class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center shadow-sm">
+                                <img src="/images/payments/alipay.png" alt="Alipay" class="h-6 object-contain">
+                            </div>
 
-                            <img src="/images/payments/wechatpay.png" alt="WECHATPAY" class="h-6" />
+                            <div
+                                class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center shadow-sm">
+                                <img src="/images/payments/wechatpay.png" alt="WeChat Pay" class="h-6 object-contain">
+                            </div>
 
-                            <img src="/images/payments/mae.png" alt="MAE" class="h-6" />
+                            <div
+                                class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center shadow-sm">
+                                <img src="/images/payments/mae.png" alt="MAE" class="h-6 object-contain">
+                            </div>
 
-                            <img src="/images/payments/mcash.png" alt="MCASH" class="h-6" />
+                            <div
+                                class="bg-white border border-gray-200 rounded-lg p-2 flex items-center justify-center shadow-sm">
+                                <img src="/images/payments/mcash.png" alt="MCash" class="h-6 object-contain">
+                            </div>
+
                         </div>
+                    </div>
+                </div>
+
+                <!-- Explore -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-[0.2em] text-[#D4AF37]">
+                        Explore
+                    </h4>
+
+                    <ul class="mt-5 space-y-4 text-sm text-white/70">
+                        <li><a href="{{ route('home') }}" class="hover:text-white">Home</a></li>
+                        <li><a href="{{ route('shop.index') }}" class="hover:text-white">Shop</a></li>
+                        <li><a href="{{ route('vouchers.index') }}" class="hover:text-white">Vouchers</a></li>
+                        <li><a href="{{ route('agents.index') }}" class="hover:text-white">Verify Agents</a></li>
+                        <li><a href="{{ route('reward-point') }}" class="hover:text-white">Reward Point</a></li>
+                        <li><a href="{{ route('web-development') }}" class="hover:text-white">Web Development</a>
+                        </li>
+                        <li><a href="{{ route('payment-gateway') }}" class="hover:text-white">Payment Gateway</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+                <!-- Support -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-[0.2em] text-[#D4AF37]">
+                        Support
+                    </h4>
+
+                    <ul class="mt-5 space-y-4 text-sm text-white/70">
+                        <li><a href="{{ route('terms') }}" class="hover:text-white">Terms & Conditions</a></li>
+                        <li><a href="{{ route('privacy') }}" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="{{ route('shipping') }}" class="hover:text-white">Shipping & Delivery</a>
+                        </li>
+                        <li><a href="{{ route('returns') }}" class="hover:text-white">Returns & Refunds</a></li>
+                        <li><a href="{{ route('guideline') }}" class="hover:text-white">Guideline</a></li>
+                        <li><a href="{{ route('faq') }}" class="hover:text-white">Faq</a></li>
+                    </ul>
+                </div>
+
+                <!-- Account -->
+                <div>
+                    <h4 class="text-sm font-bold uppercase tracking-[0.2em] text-[#D4AF37]">
+                        Account
+                    </h4>
+
+                    <ul class="mt-5 space-y-4 text-sm text-white/70">
+                        @auth
+                            <li><a href="{{ route('account.index') }}" class="hover:text-white">Dashboard</a>
+                            </li>
+                            <li><a href="{{ route('account.orders.index') }}" class="hover:text-white">My Orders</a>
+                            </li>
+                            <li><a href="{{ route('account.favorites.index') }}"class="hover:text-white">My
+                                    Wishlist</a>
+                            </li>
+                            <li><a href="{{ route('account.address.index') }}"class="hover:text-white">Shipping
+                                    Addresses</a>
+                            </li>
+                            <li><a href="{{ route('account.reviews.index') }}"class="hover:text-white">Reviews</a>
+                            </li>
+                            <li><a href="{{ route('account.profile.edit') }}"class="hover:text-white">Profile
+                                    Settings</a>
+                            </li>
+                        @else
+                            <li><a href="{{ route('login') }}" class="hover:text-white">Login</a></li>
+                            <li><a href="{{ route('register') }}" class="hover:text-white">Register</a></li>
+                        @endauth
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="mt-14 border-t border-white/10 pt-6">
+
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+
+                    <!-- Copyright -->
+                    <p class="text-sm text-white/50">
+                        © {{ date('Y') }} NEXTORA. All rights reserved.
+                    </p>
+
+                    <!-- Social -->
+                    <div class="flex items-center gap-4 text-white/60 text-sm">
+                        <a href="https://wa.me/60182222507" class="hover:text-white">WhatsApp</a>
+                        <a href="https://www.facebook.com/nextoraone" class="hover:text-white">Facebook</a>
+                        <a href="https://www.tiktok.com/@nextoraone?_r=1&_t=ZS-92KOk1nUlBh"
+                            class="hover:text-white">TikTok</a>
                     </div>
 
                 </div>
-
-                {{-- Explore --}}
-                <div class="lg:col-span-2 lg:col-start-5">
-                    <h4 class="text-white font-extrabold text-sm uppercase tracking-wider">
-                        Explore
-                    </h4>
-                    <div class="h-px w-10 bg-white/15 mt-4 mb-6"></div>
-
-                    <ul class="space-y-4">
-                        @foreach ([['label' => 'Shop', 'route' => route('shop.index')], ['label' => 'Reward Point', 'route' => route('reward-point')], ['label' => 'Voucher', 'route' => route('vouchers.index')], ['label' => 'Verify Agent', 'route' => route('agents.index')], ['label' => 'Web Development', 'route' => route('web-development')], ['label' => 'Payment Gateway', 'route' => route('payment-gateway')]] as $item)
-                            <li>
-                                <a href="{{ $item['route'] }}"
-                                    class="text-sm text-gray-300 hover:text-white transition relative inline-block
-                      after:content-[''] after:absolute after:left-0 after:-bottom-1
-                      after:h-px after:w-0 after:bg-[#D4AF37] hover:after:w-full
-                      after:transition-all after:duration-300">
-                                    {{ $item['label'] }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-
-                </div>
-
-                {{-- Support --}}
-                <div class="lg:col-span-2">
-                    <h4 class="text-white font-extrabold text-sm uppercase tracking-wider">
-                        Support
-                    </h4>
-                    <div class="h-px w-10 bg-white/15 mt-4 mb-6"></div>
-
-                    <ul class="space-y-4">
-                        @foreach ([['label' => 'Terms & Conditions', 'route' => route('terms')], ['label' => 'Privacy Policy', 'route' => route('privacy')], ['label' => 'Shipping & Delivery', 'route' => route('shipping')], ['label' => 'Returns & Refunds', 'route' => route('returns')], ['label' => 'Guideline', 'route' => route('guideline')], ['label' => 'Faq', 'route' => route('faq')]] as $item)
-                            <li>
-                                <a href="{{ $item['route'] }}"
-                                    class="text-sm text-gray-300 hover:text-white transition relative inline-block
-                          after:content-[''] after:absolute after:left-0 after:-bottom-1
-                          after:h-px after:w-0 after:bg-[#D4AF37] hover:after:w-full
-                          after:transition-all after:duration-300">
-                                    {{ $item['label'] }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-
-
-                {{-- Account --}}
-                <div class="lg:col-span-2">
-                    <h4 class="text-white font-extrabold text-sm uppercase tracking-wider">
-                        Account
-                    </h4>
-                    <div class="h-px w-10 bg-white/15 mt-4 mb-6"></div>
-
-                    <ul class="space-y-4">
-                        <li>
-                            <a href="{{ route('account.index') }}"
-                                class="text-sm text-gray-300 hover:text-white transition relative inline-block
-                                  after:content-[''] after:absolute after:left-0 after:-bottom-1
-                                  after:h-px after:w-0 after:bg-[#D4AF37] hover:after:w-full
-                                  after:transition-all after:duration-300">
-                                Dashboard
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('account.orders.index') }}"
-                                class="text-sm text-gray-300 hover:text-white transition relative inline-block
-                                  after:content-[''] after:absolute after:left-0 after:-bottom-1
-                                  after:h-px after:w-0 after:bg-[#D4AF37] hover:after:w-full
-                                  after:transition-all after:duration-300">
-                                My Orders
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('account.favorites.index') }}"
-                                class="text-sm text-gray-300 hover:text-white transition relative inline-block
-                                  after:content-[''] after:absolute after:left-0 after:-bottom-1
-                                  after:h-px after:w-0 after:bg-[#D4AF37] hover:after:w-full
-                                  after:transition-all after:duration-300">
-                                My Wishlist
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('account.address.index') }}"
-                                class="text-sm text-gray-300 hover:text-white transition relative inline-block
-                                  after:content-[''] after:absolute after:left-0 after:-bottom-1
-                                  after:h-px after:w-0 after:bg-[#D4AF37] hover:after:w-full
-                                  after:transition-all after:duration-300">
-                                Shipping Addresses
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('account.reviews.index') }}"
-                                class="text-sm text-gray-300 hover:text-white transition relative inline-block
-                                  after:content-[''] after:absolute after:left-0 after:-bottom-1
-                                  after:h-px after:w-0 after:bg-[#D4AF37] hover:after:w-full
-                                  after:transition-all after:duration-300">
-                                Reviews
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('account.profile.edit') }}"
-                                class="text-sm text-gray-300 hover:text-white transition relative inline-block
-                                  after:content-[''] after:absolute after:left-0 after:-bottom-1
-                                  after:h-px after:w-0 after:bg-[#D4AF37] hover:after:w-full
-                                  after:transition-all after:duration-300">
-                                Profile Settings
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                {{-- Social Media --}}
-                <div class="lg:col-span-2">
-                    <h4 class="text-white font-extrabold text-sm uppercase tracking-wider">
-                        Social Media
-                    </h4>
-                    <div class="h-px w-10 bg-white/15 mt-4 mb-6"></div>
-
-                    <ul class="space-y-4">
-                        <li>
-                            <a href="https://www.tiktok.com/@nextoraone?_r=1&_t=ZS-92KOk1nUlBh"
-                                class="text-sm text-gray-300 hover:text-white transition relative inline-block
-                                  after:content-[''] after:absolute after:left-0 after:-bottom-1
-                                  after:h-px after:w-0 after:bg-[#D4AF37] hover:after:w-full
-                                  after:transition-all after:duration-300">
-                                Tiktok
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/nextoraone"
-                                class="text-sm text-gray-300 hover:text-white transition relative inline-block
-                                  after:content-[''] after:absolute after:left-0 after:-bottom-1
-                                  after:h-px after:w-0 after:bg-[#D4AF37] hover:after:w-full
-                                  after:transition-all after:duration-300">
-                                Facebook
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://wa.me/60182222507"
-                                class="text-sm text-gray-300 hover:text-white transition relative inline-block
-                                  after:content-[''] after:absolute after:left-0 after:-bottom-1
-                                  after:h-px after:w-0 after:bg-[#D4AF37] hover:after:w-full
-                                  after:transition-all after:duration-300">
-                                WhatsApp
-                            </a>
-                        </li>
-
-                        <li class="text-sm text-gray-400">
-                            <a href="mailto:nextoraone@gmail.com" class="hover:text-white transition">
-                                nextoraone@gmail.com
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-
-            {{-- Bottom Bar --}}
-            <div
-                class="mt-10 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-center items-center gap-4">
-                <p class="text-base text-gray-400 font-medium">
-                    © {{ date('Y') }} Nextora. All rights reserved.
-                </p>
             </div>
 
         </div>
