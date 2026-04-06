@@ -112,9 +112,9 @@
                                                hover:bg-neutral-900 hover:text-white hover:border-neutral-900
                                                transition-all active:scale-95">
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            fill="{{ $isFavorited ? 'currentColor' : 'none' }}"
-                                            stroke="currentColor" stroke-width="1.8"
-                                            viewBox="0 0 24 24" class="h-5 w-5 {{ $isFavorited ? 'text-neutral-900' : '' }}">
+                                            fill="{{ $isFavorited ? 'currentColor' : 'none' }}" stroke="currentColor"
+                                            stroke-width="1.8" viewBox="0 0 24 24"
+                                            class="h-5 w-5 {{ $isFavorited ? 'text-neutral-900' : '' }}">
                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                 d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
                                         </svg>
@@ -125,7 +125,8 @@
                             {{-- Content --}}
                             <div class="flex-1 flex flex-col p-4 sm:p-5">
                                 <a href="{{ route('shop.show', $product->slug) }}" class="block flex-1">
-                                    <p class="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-400 mb-2">
+                                    <p
+                                        class="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-400 mb-2">
                                         {{ $product->category->name ?? 'General' }}
                                     </p>
 
@@ -179,11 +180,9 @@
                 </div>
             </div>
 
-            {{-- Desktop/Tablet Counter --}}
+            {{-- Desktop/Tablet Dots --}}
             <div class="hidden sm:flex justify-center mt-8">
-                <div class="text-sm font-semibold tracking-[0.25em] text-neutral-400">
-                    <span data-po-desktop-current>1</span> / <span data-po-desktop-total>1</span>
-                </div>
+                <div class="flex items-center justify-center gap-2" data-po-desktop-dots></div>
             </div>
 
             {{-- Mobile pager --}}
@@ -200,9 +199,7 @@
                     <span class="text-lg font-bold">‹</span>
                 </button>
 
-                <div class="text-[11px] font-semibold tracking-[0.25em] text-neutral-400">
-                    <span data-po-mobile-current>1</span> / <span data-po-mobile-total>1</span>
-                </div>
+                <div class="flex items-center gap-2" data-po-mobile-dots></div>
 
                 <button type="button"
                     class="w-9 h-9 rounded-full
@@ -216,13 +213,13 @@
                     <span class="text-lg font-bold">›</span>
                 </button>
             </div>
-
         @else
             {{-- Empty --}}
             <div
                 class="flex flex-col items-center justify-center rounded-[2rem]
                        border border-dashed border-neutral-200 bg-neutral-50 py-16 px-4">
-                <div class="w-16 h-16 rounded-full bg-white border border-neutral-200 flex items-center justify-center mb-4">
+                <div
+                    class="w-16 h-16 rounded-full bg-white border border-neutral-200 flex items-center justify-center mb-4">
                     <svg class="w-8 h-8 text-neutral-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                             d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -250,14 +247,12 @@
 
             const dPrev = document.querySelector('[data-po-desktop-prev]');
             const dNext = document.querySelector('[data-po-desktop-next]');
-            const dCur = document.querySelector('[data-po-desktop-current]');
-            const dTot = document.querySelector('[data-po-desktop-total]');
+            const dDots = document.querySelector('[data-po-desktop-dots]');
 
             const mPager = document.querySelector('[data-po-mobile-pager]');
             const mPrev = document.querySelector('[data-po-mobile-prev]');
             const mNext = document.querySelector('[data-po-mobile-next]');
-            const mCur = document.querySelector('[data-po-mobile-current]');
-            const mTot = document.querySelector('[data-po-mobile-total]');
+            const mDots = document.querySelector('[data-po-mobile-dots]');
 
             const mqMobile = window.matchMedia('(max-width: 639px)');
             const mqLgUp = window.matchMedia('(min-width: 1024px)');
@@ -267,6 +262,25 @@
 
             function perPageDesktop() {
                 return mqLgUp.matches ? 5 : 8;
+            }
+
+            function renderDots(container, total, current, onClick) {
+                if (!container) return;
+
+                container.innerHTML = '';
+
+                for (let i = 1; i <= total; i++) {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.setAttribute('aria-label', `Go to page ${i}`);
+
+                    dot.className = i === current ?
+                        'w-6 h-2 rounded-full bg-[#D4AF37] scale-110 transition-all duration-300' :
+                        'w-6 h-2 rounded-full bg-neutral-300 hover:bg-neutral-400 transition-all duration-300';
+
+                    dot.addEventListener('click', () => onClick(i));
+                    container.appendChild(dot);
+                }
             }
 
             function renderDesktop() {
@@ -279,12 +293,14 @@
                 const start = (dPage - 1) * per;
                 const end = start + per;
 
-                items.forEach((it, idx) => it.classList.toggle('hidden', !(idx >= start && idx < end)));
+                items.forEach((it, idx) => {
+                    it.classList.toggle('hidden', !(idx >= start && idx < end));
+                });
 
-                if (dCur && dTot) {
-                    dCur.textContent = String(dPage);
-                    dTot.textContent = String(total);
-                }
+                renderDots(dDots, total, dPage, (page) => {
+                    dPage = page;
+                    renderAll();
+                });
 
                 if (dPrev && dNext) {
                     dPrev.disabled = dPage <= 1;
@@ -309,12 +325,14 @@
                 const start = (mPage - 1) * per;
                 const end = start + per;
 
-                items.forEach((it, idx) => it.classList.toggle('hidden', !(idx >= start && idx < end)));
+                items.forEach((it, idx) => {
+                    it.classList.toggle('hidden', !(idx >= start && idx < end));
+                });
 
-                if (mCur && mTot) {
-                    mCur.textContent = String(mPage);
-                    mTot.textContent = String(total);
-                }
+                renderDots(mDots, total, mPage, (page) => {
+                    mPage = page;
+                    renderAll();
+                });
 
                 if (mPrev && mNext) {
                     mPrev.disabled = mPage <= 1;
@@ -335,36 +353,44 @@
                 }
             }
 
-            if (dPrev) dPrev.addEventListener('click', () => {
-                if (dPage > 1) {
-                    dPage--;
-                    renderAll();
-                }
-            });
+            if (dPrev) {
+                dPrev.addEventListener('click', () => {
+                    if (dPage > 1) {
+                        dPage--;
+                        renderAll();
+                    }
+                });
+            }
 
-            if (dNext) dNext.addEventListener('click', () => {
-                const total = Math.max(1, Math.ceil(items.length / perPageDesktop()));
-                if (dPage < total) {
-                    dPage++;
-                    renderAll();
-                }
-            });
+            if (dNext) {
+                dNext.addEventListener('click', () => {
+                    const total = Math.max(1, Math.ceil(items.length / perPageDesktop()));
+                    if (dPage < total) {
+                        dPage++;
+                        renderAll();
+                    }
+                });
+            }
 
-            if (mPrev) mPrev.addEventListener('click', () => {
-                if (mPage > 1) {
-                    mPage--;
-                    renderAll();
-                }
-            });
+            if (mPrev) {
+                mPrev.addEventListener('click', () => {
+                    if (mPage > 1) {
+                        mPage--;
+                        renderAll();
+                    }
+                });
+            }
 
-            if (mNext) mNext.addEventListener('click', () => {
-                const per = 2;
-                const total = Math.max(1, Math.ceil(items.length / per));
-                if (mPage < total) {
-                    mPage++;
-                    renderAll();
-                }
-            });
+            if (mNext) {
+                mNext.addEventListener('click', () => {
+                    const per = 2;
+                    const total = Math.max(1, Math.ceil(items.length / per));
+                    if (mPage < total) {
+                        mPage++;
+                        renderAll();
+                    }
+                });
+            }
 
             mqMobile.addEventListener?.('change', renderAll);
             mqLgUp.addEventListener?.('change', renderAll);
@@ -373,5 +399,7 @@
             renderAll();
         });
     </script>
+
+
 
 </section>

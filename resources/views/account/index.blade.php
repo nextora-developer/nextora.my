@@ -76,45 +76,69 @@
 
                         {{-- Right: Membership-style Reward Card --}}
                         <section
-                            class="relative col-span-12 lg:col-span-4 overflow-hidden rounded-3xl p-8 bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-xl group">
-                            <div
-                                class="absolute top-0 right-0 w-32 h-32 bg-[#D4AF37] rounded-full blur-[80px] opacity-20 group-hover:opacity-30 transition-opacity">
-                            </div>
-                            <div class="relative h-full flex flex-col justify-between">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <div
-                                            class="text-[10px] font-black uppercase tracking-[0.2em] text-[#D4AF37]/80">
-                                            Reward Points</div>
-                                        <div class="mt-4 flex items-baseline gap-1">
-                                            <span
-                                                class="text-5xl font-black text-white tracking-tighter">{{ number_format($stats['points'] ?? 0) }}</span>
-                                            <span class="text-xs font-bold text-[#D4AF37]">PTS</span>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="bg-white/10 backdrop-blur-md border border-white/10 p-2.5 rounded-xl shadow-inner">
-                                        <svg class="w-6 h-6 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
-                                            <path
-                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="mt-8">
-                                    <div class="flex items-center justify-between text-white/50 mb-3">
-                                        <span class="text-[10px] font-black uppercase tracking-widest">Est. Cash
-                                            Value</span>
-                                        <span
-                                            class="text-lg font-bold text-white">RM{{ number_format(($stats['points'] ?? 0) / 100, 2) }}</span>
-                                    </div>
-                                    <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
-                                        <div
-                                            class="h-full bg-gradient-to-r from-[#8f6a10] to-[#D4AF37] w-full rounded-full">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
+    class="relative col-span-12 lg:col-span-4 overflow-hidden rounded-3xl p-8
+           bg-gradient-to-br from-[#FDFBF7] via-[#F7F3EC] to-[#EFE7DA]
+           border border-[#E8E1D6]
+           shadow-[0_20px_50px_rgba(0,0,0,0.06)]
+           group">
+
+    {{-- subtle glow --}}
+    <div class="absolute -top-10 -right-10 w-40 h-40 bg-[#D4AF37]/10 rounded-full blur-[80px]"></div>
+
+    <div class="relative h-full flex flex-col justify-between">
+
+        {{-- Top --}}
+        <div class="flex items-start justify-between">
+            <div>
+                <div
+                    class="text-[10px] font-black uppercase tracking-[0.2em] text-[#8f6a10]/70">
+                    Reward Points
+                </div>
+
+                <div class="mt-4 flex items-baseline gap-2">
+                    <span
+                        class="text-5xl font-black text-gray-900 tracking-tight">
+                        {{ number_format($stats['points'] ?? 0) }}
+                    </span>
+                    <span class="text-xs font-bold text-[#8f6a10]">PTS</span>
+                </div>
+            </div>
+
+            {{-- Icon --}}
+            <div
+                class="bg-white/80 backdrop-blur-md border border-[#E8E1D6]
+                       p-3 rounded-2xl shadow-sm">
+                <svg class="w-6 h-6 text-[#D4AF37]" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+            </div>
+        </div>
+
+        {{-- Bottom --}}
+        <div class="mt-10">
+
+            <div class="flex items-center justify-between mb-4">
+                <span
+                    class="text-[10px] font-black uppercase tracking-widest text-gray-400">
+                    Est. Cash Value
+                </span>
+
+                <span class="text-lg font-bold text-[#8f6a10]">
+                    RM{{ number_format(($stats['points'] ?? 0) / 100, 2) }}
+                </span>
+            </div>
+
+            {{-- Progress --}}
+            <div class="w-full h-2 bg-white rounded-full overflow-hidden border border-[#E8E1D6]">
+                <div
+                    class="h-full bg-gradient-to-r from-[#C6A44F] via-[#D4AF37] to-[#8f6a10] w-full rounded-full">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
                     </div>
 
                     {{-- 2. Points History Section --}}

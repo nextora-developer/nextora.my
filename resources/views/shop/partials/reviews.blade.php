@@ -96,27 +96,6 @@
             @endforeach
         </div>
 
-        {{-- Bottom trust strip --}}
-        {{-- <div class="mt-8 lg:mt-10 rounded-3xl border border-black/[0.06] bg-white/70 backdrop-blur px-6 py-5">
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div class="flex items-center gap-3">
-                    <div class="h-11 w-11 rounded-2xl bg-[#D4AF37]/12 flex items-center justify-center">
-                        <span class="text-[#8f6a10] font-black">★</span>
-                    </div>
-                    <div>
-                        <div class="text-sm font-black text-black">Trusted experience</div>
-                        <div class="text-xs text-black/60">Secure payments • Fast fulfilment • Friendly support</div>
-                    </div>
-                </div>
-
-                <a href="{{ route('shop.index') }}"
-                    class="inline-flex items-center justify-center rounded-2xl px-6 py-3
-                           bg-black text-white font-black text-xs uppercase tracking-[0.22em]
-                           hover:bg-black/90 transition">
-                    Browse Products
-                </a>
-            </div>
-        </div> --}}
 
     </div>
 </section>

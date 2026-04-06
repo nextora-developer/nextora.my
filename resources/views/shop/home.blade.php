@@ -82,23 +82,26 @@
                             <div class="lg:col-span-4">
                                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-6 h-full">
 
-                                    <a href="{{ route('shop.index') }}"
+                                    <a href="{{ route('web-development') }}"
                                         class="group relative overflow-hidden rounded-[2rem] border border-neutral-200 bg-neutral-50 min-h-[180px] lg:min-h-[248px] p-6 flex flex-col justify-between transition hover:shadow-md">
+
                                         <div>
                                             <span
                                                 class="text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-500">
-                                                Trending Now
+                                                Our Service
                                             </span>
+
                                             <h3 class="mt-3 text-xl font-bold tracking-tight text-neutral-900">
-                                                Best Sellers
+                                                Web Development
                                             </h3>
+
                                             <p class="mt-2 text-sm text-neutral-500 max-w-xs">
-                                                Explore products customers keep coming back for.
+                                                Build modern, high-performing websites tailored to your business goals.
                                             </p>
                                         </div>
 
                                         <div class="flex items-center justify-between">
-                                            <span class="text-sm font-semibold text-neutral-900">Explore</span>
+                                            <span class="text-sm font-semibold text-neutral-900">View Service</span>
                                             <span
                                                 class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-neutral-900 text-white transition group-hover:translate-x-1">
                                                 →
@@ -148,7 +151,7 @@
                                                 class="inline-flex h-10 w-10 items-center justify-center rounded-full
                    bg-white text-neutral-900
                    transition-all duration-300
-                   group-hover:bg-[#D4AF37] group-hover:text-black
+                   group-hover:bg-[#D4AF37] group-hover:text-white
                    group-hover:translate-x-1">
                                                 →
                                             </span>
@@ -232,7 +235,7 @@
                                                             class="inline-flex h-8 w-8 items-center justify-center rounded-full
                                                    bg-[#F6F1E4] text-[#8f6a10]
                                                    transition-all duration-300
-                                                   group-hover:bg-[#D4AF37] group-hover:text-black">
+                                                   group-hover:bg-[#D4AF37] group-hover:text-white">
                                                             →
                                                         </span>
                                                     </div>
@@ -257,8 +260,8 @@
         @include('shop.partials.reviews')
         @include('shop.partials.voucher-promo')
         @include('shop.partials.trust-value')
-        @include('shop.partials.payment-methods')
         @include('shop.partials.bottom-cta')
+        {{-- @include('shop.partials.payment-methods') --}}
     </div>
 
     <script>

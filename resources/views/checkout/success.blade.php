@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="bg-[#FAF9F6] min-h-[calc(100vh-80px)] flex items-center justify-center py-12">
+    <div class="bg-[#FAF9F6] min-h-[calc(100vh-80px)] flex items-center justify-center py-8">
         <div class="max-w-xl w-full mx-auto px-6 text-center">
 
             {{-- Animated Icon Container --}}
@@ -14,12 +14,12 @@
             </div>
 
             {{-- Title & Subtitle --}}
-            <h1 class="text-3xl font-bold text-gray-900 mb-3 tracking-tight">
+            <h1 class="text-3xl font-bold text-gray-900 mb-5 tracking-tight">
                 Order Confirmed
             </h1>
-            <p class="text-gray-500 text-lg leading-relaxed mb-10 max-w-sm mx-auto">
+            {{-- <p class="text-gray-500 text-lg leading-relaxed mb-10 max-w-sm mx-auto">
                 Success! Your payment was processed and your order is being prepared.
-            </p>
+            </p> --}}
 
             {{-- Receipt Card --}}
             <div class="bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-8 text-left mb-10">

@@ -1,15 +1,20 @@
-{{-- Bottom CTA Section - Clean Split Layout --}}
-<section class="relative overflow-hidden bg-gradient-to-b from-white to-[#F3F3F0] py-16 lg:py-20">
+{{-- Bottom CTA Section - Unified Background --}}
+<section class="relative overflow-hidden bg-[#F9F7F2] py-16 lg:py-24">
     <div class="max-w-7xl5 mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="relative overflow-hidden rounded-[2.5rem] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
+        <div class="relative overflow-hidden rounded-[2.5rem] shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
 
-            <div class="grid lg:grid-cols-[1.35fr_0.65fr] min-h-[420px]">
+            {{-- ✅ 整块统一背景 --}}
+            <div class="absolute inset-0 bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#251f14]"></div>
+
+            {{-- Glow --}}
+            <div class="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-[#D4AF37]/20 blur-[120px]"></div>
+            <div class="absolute right-0 top-10 h-64 w-64 rounded-full bg-[#D4AF37]/10 blur-[100px]"></div>
+
+            <div class="relative grid lg:grid-cols-[1.2fr_0.8fr] min-h-[420px]">
 
                 {{-- Left Content --}}
-                <div class="relative bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#251f14] overflow-hidden flex items-center px-8 py-14 sm:px-12 lg:px-20">
-                    <div class="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-[#D4AF37]/20 blur-[120px]"></div>
-
-                    <div class="relative max-w-2xl">
+                <div class="flex items-center px-8 py-14 sm:px-12 lg:px-20">
+                    <div class="max-w-2xl">
                         <div class="mb-6 h-1 w-12 bg-gradient-to-r from-[#D4AF37] to-transparent"></div>
 
                         <h2 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white">
@@ -33,20 +38,20 @@
                     </div>
                 </div>
 
-                {{-- Right Image --}}
-                <div class="relative hidden lg:flex bg-[#f3f3f0] items-end justify-end">
-                    <div class="absolute right-10 top-10 h-56 w-56 rounded-full bg-white/70 blur-3xl"></div>
-
-                    <img src="{{ asset('images/cta.gif') }}" alt="Mascot Bear"
-                        class="relative h-full w-auto object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.18)]" />
-                </div>
+                {{-- ✅ Right Image（浮动，不再有背景块） --}}
+                <div class="relative hidden lg:block overflow-hidden">
+    <img src="{{ asset('images/cta.gif') }}" alt="Mascot Bear"
+        class="absolute right-0 bottom-0 h-[100%] w-auto object-contain
+               drop-shadow-[0_20px_40px_rgba(0,0,0,0.28)]" />
+</div>
 
             </div>
 
-            {{-- Mobile Image --}}
-            <div class="relative block lg:hidden bg-[#f3f3f0] h-[240px]">
+            {{-- Mobile Image（同样统一背景） --}}
+            <div class="relative block lg:hidden h-[260px]">
                 <img src="{{ asset('images/cta.gif') }}" alt="Mascot Bear"
-                    class="absolute bottom-0 right-1/2 translate-x-1/2 h-[110%] w-auto object-contain drop-shadow-[0_16px_30px_rgba(0,0,0,0.18)]" />
+                    class="absolute bottom-0 left-1/2 -translate-x-1/2 h-[120%] w-auto object-contain
+                           drop-shadow-[0_20px_40px_rgba(0,0,0,0.35)]" />
             </div>
 
         </div>
