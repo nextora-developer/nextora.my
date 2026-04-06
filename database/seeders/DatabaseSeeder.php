@@ -15,10 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         // Admin user
         $admin = User::updateOrCreate(
-            ['email' => 'admin@admin.com'],
+            ['email' => 'admin@nextora.my'],
             [
                 'name'     => 'Admin',
-                'password' => Hash::make('password'),
+                'password' => Hash::make('nextora1234'),
                 'is_admin' => true,
             ]
         );
