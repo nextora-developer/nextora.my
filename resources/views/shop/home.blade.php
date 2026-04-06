@@ -544,6 +544,228 @@
             </div>
         </section>
 
+        <!-- Brand Story / Why Shop With Us -->
+        <section class="py-16 lg:py-24 bg-white border-y border-[#eee2ca]">
+            <div class="max-w-7xl5 mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+
+                    {{-- Image Side --}}
+                    <div class="relative">
+                        <div class="absolute -top-6 -left-6 h-24 w-24 rounded-full bg-[#D4AF37]/10 blur-2xl"></div>
+                        <div class="absolute -bottom-6 -right-6 h-24 w-24 rounded-full bg-black/5 blur-2xl"></div>
+
+                        <div
+                            class="relative overflow-hidden rounded-[2rem] border border-[#eadfc8] bg-[#faf7f0] shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+                                alt="Nextora Brand Story"
+                                class="w-full h-[320px] sm:h-[420px] lg:h-[520px] object-cover">
+                        </div>
+                    </div>
+
+                    {{-- Content Side --}}
+                    <div>
+                        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#b99139]">
+                            About Nextora
+                        </p>
+
+                        <h2 class="mt-3 text-3xl lg:text-5xl font-black leading-tight text-[#111111]">
+                            Smart choices for a
+                            <span class="text-[#b99139]">better everyday lifestyle</span>.
+                        </h2>
+
+                        <p class="mt-5 text-base leading-8 text-neutral-600">
+                            At Nextora, we focus on bringing together products, solutions, and experiences
+                            that make daily living more convenient, efficient, and inspiring.
+                            We believe modern shopping should be simple, reliable, and built around what people truly
+                            need.
+                        </p>
+
+                        <div class="mt-10 grid sm:grid-cols-2 gap-4">
+                            {{-- Feature 1 --}}
+                            <div
+                                class="group relative p-5 rounded-[2rem] border border-transparent bg-neutral-50/50 hover:bg-white hover:border-[#eadfc8] hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.1)] transition-all duration-500">
+                                <div class="flex gap-4 items-start">
+                                    <div
+                                        class="flex-shrink-0 w-10 h-10 rounded-xl bg-neutral-900 group-hover:bg-[#D4AF37] text-white flex items-center justify-center text-sm transition-all duration-300 shadow-lg shadow-black/5">
+                                        ✦
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-[#111111] text-[15px] tracking-tight group-hover:text-[#D4AF37] transition-colors">
+                                            Carefully Selected
+                                        </h3>
+                                        <p class="text-[13px] leading-relaxed text-neutral-500 mt-1.5">
+                                            Products chosen for quality, practicality, and lasting value.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Feature 2 --}}
+                            <div
+                                class="group relative p-5 rounded-[2rem] border border-transparent bg-neutral-50/50 hover:bg-white hover:border-[#eadfc8] hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.1)] transition-all duration-500">
+                                <div class="flex gap-4 items-start">
+                                    <div
+                                        class="flex-shrink-0 w-10 h-10 rounded-xl bg-neutral-900 group-hover:bg-[#D4AF37] text-white flex items-center justify-center text-sm transition-all duration-300 shadow-lg shadow-black/5">
+                                        ⚑
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-[#111111] text-[15px] tracking-tight group-hover:text-[#D4AF37] transition-colors">
+                                            Reliable Experience
+                                        </h3>
+                                        <p class="text-[13px] leading-relaxed text-neutral-500 mt-1.5">
+                                            A smooth journey with secure checkout and local support.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Feature 3 --}}
+                            <div
+                                class="group relative p-5 rounded-[2rem] border border-transparent bg-neutral-50/50 hover:bg-white hover:border-[#eadfc8] hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.1)] transition-all duration-500">
+                                <div class="flex gap-4 items-start">
+                                    <div
+                                        class="flex-shrink-0 w-10 h-10 rounded-xl bg-neutral-900 group-hover:bg-[#D4AF37] text-white flex items-center justify-center text-sm transition-all duration-300 shadow-lg shadow-black/5">
+                                        ♡
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-[#111111] text-[15px] tracking-tight group-hover:text-[#D4AF37] transition-colors">
+                                            Community Benefits
+                                        </h3>
+                                        <p class="text-[13px] leading-relaxed text-neutral-500 mt-1.5">
+                                            Enjoy member rewards and exclusive early product access.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Feature 4 --}}
+                            <div
+                                class="group relative p-5 rounded-[2rem] border border-transparent bg-neutral-50/50 hover:bg-white hover:border-[#eadfc8] hover:shadow-[0_20px_40px_-15px_rgba(212,175,55,0.1)] transition-all duration-500">
+                                <div class="flex gap-4 items-start">
+                                    <div
+                                        class="flex-shrink-0 w-10 h-10 rounded-xl bg-neutral-900 group-hover:bg-[#D4AF37] text-white flex items-center justify-center text-sm transition-all duration-300 shadow-lg shadow-black/5">
+                                        ⟡
+                                    </div>
+                                    <div>
+                                        <h3
+                                            class="font-bold text-[#111111] text-[15px] tracking-tight group-hover:text-[#D4AF37] transition-colors">
+                                            Future-Focused
+                                        </h3>
+                                        <p class="text-[13px] leading-relaxed text-neutral-500 mt-1.5">
+                                            Built for modern lifestyles with a forward-thinking approach.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-16 lg:py-24 bg-[#f8f5ef]">
+            <div class="max-w-7xl5 mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto">
+                    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#b99139]">
+                        Client Feedback
+                    </p>
+                    <h2 class="mt-3 text-3xl lg:text-4xl font-black text-[#111111]">
+                        What They Say
+                    </h2>
+                    <p class="mt-4 text-neutral-600 leading-7">
+                        Real feedback from clients who value our responsive support, practical solutions,
+                        and smooth digital experience.
+                    </p>
+                </div>
+
+                <div class="mt-12 grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+                    <div
+                        class="rounded-[1.75rem] border border-[#eadfc8] bg-white p-7 shadow-sm hover:shadow-lg transition">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-[#b99139] text-sm">★★★★★</div>
+                            <span
+                                class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Verified</span>
+                        </div>
+
+                        <p class="mt-5 text-neutral-600 leading-7">
+                            “Working with Nextora made the whole process feel simple and well-organized.
+                            Their team was responsive, clear, and genuinely focused on helping our business move
+                            forward.”
+                        </p>
+
+                        <div class="mt-6 flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-[#111111] text-white flex items-center justify-center font-bold">
+                                A
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-[#111111]">Aisyah Rahman</h4>
+                                <p class="text-sm text-neutral-500">Kuala Lumpur</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="rounded-[1.75rem] border border-[#eadfc8] bg-white p-7 shadow-sm hover:shadow-lg transition">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-[#b99139] text-sm">★★★★★</div>
+                            <span
+                                class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Verified</span>
+                        </div>
+
+                        <p class="mt-5 text-neutral-600 leading-7">
+                            “What stood out most was how practical and efficient everything was.
+                            Nextora understood our needs quickly and delivered a solution that was both useful and easy
+                            to adopt.”
+                        </p>
+
+                        <div class="mt-6 flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-[#111111] text-white flex items-center justify-center font-bold">
+                                D
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-[#111111]">Daniel Wong</h4>
+                                <p class="text-sm text-neutral-500">Penang</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="rounded-[1.75rem] border border-[#eadfc8] bg-white p-7 shadow-sm hover:shadow-lg transition">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-[#b99139] text-sm">★★★★★</div>
+                            <span
+                                class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-400">Verified</span>
+                        </div>
+
+                        <p class="mt-5 text-neutral-600 leading-7">
+                            “Nextora gave us confidence from the start.
+                            The communication was smooth, the support was reliable, and the overall experience felt
+                            modern, professional, and dependable.”
+                        </p>
+
+                        <div class="mt-6 flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-[#111111] text-white flex items-center justify-center font-bold">
+                                S
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-[#111111]">Siti Nurul</h4>
+                                <p class="text-sm text-neutral-500">Johor Bahru</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </div>
 
     <script>
