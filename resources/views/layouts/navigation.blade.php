@@ -80,109 +80,103 @@
 
                 {{-- Center: Main Nav --}}
                 <div class="flex-1 flex items-center justify-center">
-                    <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-1 lg:gap-1">
 
                         @php
                             $navBase =
-                                'px-4 py-2 text-[13px] font-semibold tracking-[0.12em] uppercase rounded-full transition';
-                            $navIdle = 'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100';
-                            $navActive = 'text-neutral-900 bg-neutral-100';
+                                'relative px-4 py-2 text-[12px] font-bold tracking-[0.2em] uppercase transition-all duration-300 group';
+                            $navIdle = 'text-neutral-500 hover:text-black';
+                            $navActive = 'text-black';
+                            $underlineBase =
+                                'absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] bg-[#D4AF37] transition-all duration-300';
                         @endphp
 
+                        {{-- Home --}}
                         <a href="{{ route('home') }}"
                             class="{{ $navBase }} {{ request()->routeIs('home') ? $navActive : $navIdle }}">
                             Home
+                            <span
+                                class="{{ $underlineBase }} {{ request()->routeIs('home') ? 'w-4' : 'w-0 group-hover:w-4' }}"></span>
                         </a>
 
+                        {{-- Shop --}}
                         <a href="{{ route('shop.index') }}"
                             class="{{ $navBase }} {{ request()->routeIs('shop.*') ? $navActive : $navIdle }}">
                             Shop
+                            <span
+                                class="{{ $underlineBase }} {{ request()->routeIs('shop.*') ? 'w-4' : 'w-0 group-hover:w-4' }}"></span>
                         </a>
 
+                        {{-- Vouchers --}}
                         <a href="{{ route('vouchers.index') }}"
                             class="{{ $navBase }} {{ request()->routeIs('vouchers.*') ? $navActive : $navIdle }}">
                             Vouchers
+                            <span
+                                class="{{ $underlineBase }} {{ request()->routeIs('vouchers.*') ? 'w-4' : 'w-0 group-hover:w-4' }}"></span>
                         </a>
 
-                        {{-- Programs --}}
-                        <div class="relative" x-data="{ open: false }">
-                            <button type="button" @click="open = !open" @click.outside="open = false"
-                                class="{{ $navBase }} {{ $navIdle }} flex items-center gap-2">
+                        {{-- Programs Dropdown --}}
+                        <div class="relative group/dropdown" x-data="{ open: false }" @mouseenter="open = true"
+                            @mouseleave="open = false">
+                            <button type="button"
+                                class="{{ $navBase }} {{ $navIdle }} flex items-center gap-1">
                                 Programs
-                                <svg class="h-4 w-4 transition-transform" :class="{ 'rotate-180': open }" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                <svg class="h-3 w-3 transition-transform duration-300" :class="{ 'rotate-180': open }"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
                                         d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                                 </svg>
+                                <span class="{{ $underlineBase }} w-0 group-hover/dropdown:w-4"></span>
                             </button>
 
-                            <div x-cloak x-show="open" x-transition
-                                class="absolute left-0 top-full mt-3 w-56 rounded-2xl border border-neutral-200 bg-white shadow-xl overflow-hidden">
-                                <div class="p-2">
+                            <div x-cloak x-show="open" x-transition:enter="transition ease-out duration-200"
+                                x-transition:enter-start="opacity-0 translate-y-2"
+                                x-transition:enter-end="opacity-100 translate-y-0"
+                                class="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-60 z-50">
+                                <div
+                                    class="rounded-2xl border border-[#eee2ca] bg-white/90 backdrop-blur-md shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] overflow-hidden p-2">
                                     <a href="{{ route('reward-point') }}"
-                                        class="block px-4 py-3 rounded-xl text-sm font-medium text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900">
+                                        class="flex items-center gap-3 px-4 py-3 rounded-xl text-[11px] font-bold uppercase tracking-widest text-neutral-600 hover:bg-[#D4AF37]/5 hover:text-[#D4AF37] transition-all">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
                                         Reward Point
                                     </a>
                                 </div>
                             </div>
                         </div>
 
-                        {{-- Service --}}
-                        <div class="relative" x-data="{ open: false }">
-                            <button type="button" @click="open = !open" @click.outside="open = false"
-                                class="{{ $navBase }} {{ $navIdle }} flex items-center gap-2">
+                        {{-- Service Dropdown --}}
+                        <div class="relative group/dropdown" x-data="{ open: false }" @mouseenter="open = true"
+                            @mouseleave="open = false">
+                            <button type="button"
+                                class="{{ $navBase }} {{ $navIdle }} flex items-center gap-1">
                                 Service
-                                <svg class="h-4 w-4 transition-transform" :class="{ 'rotate-180': open }" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                <svg class="h-3 w-3 transition-transform duration-300" :class="{ 'rotate-180': open }"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
                                         d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                                 </svg>
+                                <span class="{{ $underlineBase }} w-0 group-hover/dropdown:w-4"></span>
                             </button>
 
-                            <div x-cloak x-show="open" x-transition
-                                class="absolute left-0 top-full mt-3 w-56 rounded-2xl border border-neutral-200 bg-white shadow-xl overflow-hidden">
-                                <div class="p-2">
-
+                            <div x-cloak x-show="open" x-transition:enter="transition ease-out duration-200"
+                                x-transition:enter-start="opacity-0 translate-y-2"
+                                x-transition:enter-end="opacity-100 translate-y-0"
+                                class="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-64 z-50">
+                                <div
+                                    class="rounded-2xl border border-[#eee2ca] bg-white/80 backdrop-blur-md shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] overflow-hidden p-2">
                                     <a href="{{ route('web-development') }}"
-                                        class="block px-4 py-3 rounded-xl text-sm font-medium text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900">
+                                        class="flex items-center gap-3 px-4 py-3 rounded-xl text-[11px] font-bold uppercase tracking-widest text-neutral-600 hover:bg-[#D4AF37]/5 hover:text-[#D4AF37] transition-all">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
                                         Web Development
                                     </a>
-
                                     <a href="{{ route('payment-gateway') }}"
-                                        class="block px-4 py-3 rounded-xl text-sm font-medium text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900">
+                                        class="flex items-center gap-3 px-4 py-3 rounded-xl text-[11px] font-bold uppercase tracking-widest text-neutral-600 hover:bg-[#D4AF37]/5 hover:text-[#D4AF37] transition-all">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37]"></span>
                                         Payment Gateway
                                     </a>
                                 </div>
                             </div>
                         </div>
-
-                        {{-- Help --}}
-                        {{-- <div class="relative" x-data="{ open: false }">
-                            <button type="button" @click="open = !open" @click.outside="open = false"
-                                class="{{ $navBase }} {{ $navIdle }} flex items-center gap-2">
-                                Help
-                                <svg class="h-4 w-4 transition-transform" :class="{ 'rotate-180': open }" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                </svg>
-                            </button>
-
-                            <div x-cloak x-show="open" x-transition
-                                class="absolute left-0 top-full mt-3 w-56 rounded-2xl border border-neutral-200 bg-white shadow-xl overflow-hidden">
-                                <div class="p-2">
-                                    <a href="{{ route('guideline') }}"
-                                        class="block px-4 py-3 rounded-xl text-sm font-medium text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900">
-                                        Guideline
-                                    </a>
-
-                                    <a href="{{ route('faq') }}"
-                                        class="block px-4 py-3 rounded-xl text-sm font-medium text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900">
-                                        FAQ
-                                    </a>
-                                </div>
-                            </div>
-                        </div> --}}
 
                     </div>
                 </div>
@@ -208,75 +202,146 @@
                     </form>
 
                     <a href="{{ route('cart.index') }}"
-                        class="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-neutral-200 text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 transition">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.8" stroke="currentColor">
+                        class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-neutral-100 bg-white transition-all duration-300 hover:border-[#D4AF37] hover:shadow-[0_8px_20px_-10px_rgba(212,175,55,0.3)]">
+
+                        {{-- Refined Bag Icon --}}
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 text-neutral-800 transition-colors group-hover:text-[#D4AF37]"
+                            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                                d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
                         </svg>
 
+                        {{-- Premium Badge --}}
                         <span data-cart-count
-                            class="absolute -top-1 -right-1 min-w-[20px] h-5 px-1 rounded-full bg-neutral-900 text-white text-[10px] font-bold flex items-center justify-center">
+                            class="absolute -top-1.5 -right-1.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#D4AF37] px-1 text-[9px] font-black uppercase tracking-tighter text-black ring-2 ring-white transition-transform group-hover:scale-110">
                             {{ auth()->user()?->cart?->items?->count() ?? 0 }}
                         </span>
                     </a>
 
                     @auth
-                        <div class="relative" x-data="{ open: false }">
-                            <button type="button" @click="open = !open" @click.outside="open = false"
-                                class="flex items-center gap-3 rounded-full border border-neutral-200 bg-white pl-1 pr-4 py-1.5 hover:bg-neutral-50 transition">
-                                <div
-                                    class="h-9 w-9 rounded-full bg-neutral-900 text-white flex items-center justify-center text-xs font-bold uppercase">
-                                    {{ substr(Auth::user()->name, 0, 1) }}
+                        <div class="relative" x-data="{ open: false }" @mouseenter="open = true"
+                            @mouseleave="open = false">
+                            {{-- User Trigger --}}
+                            <button type="button" class="flex items-center gap-3 py-1 group outline-none">
+
+                                <div class="relative">
+                                    {{-- Initial Circle with Gold Border --}}
+                                    <div
+                                        class="h-9 w-9 rounded-full bg-neutral-900 border border-white/10 text-[#D4AF37] flex items-center justify-center text-[11px] font-black uppercase tracking-tighter transition-all group-hover:shadow-[0_0_15px_rgba(212,175,55,0.3)] group-hover:border-[#D4AF37]/50">
+                                        {{ substr(Auth::user()->name, 0, 1) }}
+                                    </div>
+                                    {{-- Status Indicator --}}
+                                    <span
+                                        class="absolute bottom-0 right-0 block h-2.5 w-2.5 rounded-full bg-green-500 border-2 border-white"></span>
                                 </div>
-                                <span class="max-w-[120px] truncate text-sm font-semibold text-neutral-800">
-                                    {{ Auth::user()->name }}
-                                </span>
-                                <svg class="h-4 w-4 text-neutral-500 transition-transform" :class="{ 'rotate-180': open }"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+
+                                <div class="hidden lg:block text-left">
+                                    <p
+                                        class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 font-bold leading-none mb-1">
+                                        Account</p>
+                                    <p
+                                        class="max-w-[100px] truncate text-xs font-black text-neutral-900 uppercase tracking-wide">
+                                        {{ Auth::user()->name }}
+                                    </p>
+                                </div>
+
+                                <svg class="h-3 w-3 text-neutral-400 transition-transform duration-300"
+                                    :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
                                         d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                                 </svg>
                             </button>
 
-                            <div x-cloak x-show="open" x-transition
-                                class="absolute right-0 top-full mt-3 w-64 rounded-2xl border border-neutral-200 bg-white shadow-xl overflow-hidden">
-                                <div class="p-2">
-                                    <a href="{{ route('account.index') }}"
-                                        class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-neutral-700 hover:bg-neutral-100">
-                                        <span>Dashboard</span>
-                                    </a>
+                            {{-- Dropdown Menu --}}
+                            <div x-cloak x-show="open" x-transition:enter="transition ease-out duration-200"
+                                x-transition:enter-start="opacity-0 translate-y-2"
+                                x-transition:enter-end="opacity-100 translate-y-0"
+                                class="absolute right-0 top-full pt-4 w-64 z-50">
 
-                                    <a href="{{ route('account.orders.index') }}"
-                                        class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-neutral-700 hover:bg-neutral-100">
-                                        <span>My Orders</span>
-                                    </a>
+                                <div
+                                    class="rounded-2xl border border-[#eee2ca] bg-white backdrop-blur-md shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden">
+                                    {{-- Header Summary --}}
+                                    <div class="px-6 py-4 bg-neutral-50/50 border-b border-neutral-100">
+                                        <p class="text-[10px] uppercase tracking-[0.2em] text-neutral-400 font-bold">Email
+                                            Address</p>
+                                        <p class="text-xs font-medium text-neutral-900 truncate">{{ Auth::user()->email }}
+                                        </p>
+                                    </div>
 
-                                    <a href="{{ route('account.favorites.index') }}"
-                                        class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-neutral-700 hover:bg-neutral-100">
-                                        <span>My Wishlist</span>
-                                    </a>
+                                    <div class="p-2">
+                                        <a href="{{ route('account.index') }}"
+                                            class="flex items-center gap-3 px-4 py-3 rounded-xl text-[11px] font-bold uppercase tracking-widest text-neutral-600 hover:bg-[#D4AF37]/5 hover:text-[#D4AF37] transition-all group/item">
+                                            <div
+                                                class="w-8 h-8 rounded-lg bg-neutral-100 flex items-center justify-center group-hover/item:bg-[#D4AF37]/10 transition-colors">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                    class="size-5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z" />
+                                                </svg>
 
-                                    <a href="{{ route('account.profile.edit') }}"
-                                        class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-neutral-700 hover:bg-neutral-100">
-                                        <span>Profile Settings</span>
-                                    </a>
 
-                                    <div class="my-2 border-t border-neutral-200"></div>
+                                            </div>
+                                            Dashboard
+                                        </a>
 
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <button type="submit"
-                                            class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50">
-                                            <span>Log Out</span>
-                                        </button>
-                                    </form>
+                                        <a href="{{ route('account.orders.index') }}"
+                                            class="flex items-center gap-3 px-4 py-3 rounded-xl text-[11px] font-bold uppercase tracking-widest text-neutral-600 hover:bg-[#D4AF37]/5 hover:text-[#D4AF37] transition-all group/item">
+                                            <div
+                                                class="w-8 h-8 rounded-lg bg-neutral-100 flex items-center justify-center group-hover/item:bg-[#D4AF37]/10 transition-colors">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                    class="size-5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                                                </svg>
+
+                                            </div>
+                                            My Orders
+                                        </a>
+
+                                        <a href="{{ route('account.favorites.index') }}"
+                                            class="flex items-center gap-3 px-4 py-3 rounded-xl text-[11px] font-bold uppercase tracking-widest text-neutral-600 hover:bg-[#D4AF37]/5 hover:text-[#D4AF37] transition-all group/item">
+                                            <div
+                                                class="w-8 h-8 rounded-lg bg-neutral-100 flex items-center justify-center group-hover/item:bg-[#D4AF37]/10 transition-colors">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                    class="size-5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                                </svg>
+
+                                            </div>
+                                            Wishlist
+                                        </a>
+
+                                        <div class="my-2 border-t border-neutral-100"></div>
+
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <button type="submit"
+                                                class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-[11px] font-black uppercase tracking-widest text-red-500 hover:bg-red-50 transition-all">
+                                                <div class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                        class="size-5">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+                                                    </svg>
+
+                                                </div>
+                                                Log Out
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     @else
                         <a href="{{ route('login') }}"
-                            class="inline-flex items-center justify-center rounded-full bg-neutral-900 px-5 py-2.5 text-sm font-bold text-white hover:bg-black transition">
+                            class="inline-flex items-center justify-center rounded-full bg-neutral-900 px-7 py-2.5 text-[11px] font-black uppercase tracking-[0.2em] text-white hover:bg-[#D4AF37] transition-all duration-300 shadow-lg shadow-black/10">
                             Login
                         </a>
                     @endauth
@@ -316,7 +381,7 @@
                         </svg>
                     </button>
 
-                    <a href="{{ route('cart.index') }}"
+                    {{-- <a href="{{ route('cart.index') }}"
                         class="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 text-neutral-700">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                             stroke-width="1.8" stroke="currentColor">
@@ -326,6 +391,24 @@
 
                         <span data-cart-count
                             class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 rounded-full bg-neutral-900 text-white text-[9px] font-bold flex items-center justify-center">
+                            {{ auth()->user()?->cart?->items?->count() ?? 0 }}
+                        </span>
+                    </a> --}}
+
+                    <a href="{{ route('cart.index') }}"
+                        class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-neutral-100 bg-white transition-all duration-300 hover:border-[#D4AF37] hover:shadow-[0_8px_20px_-10px_rgba(212,175,55,0.3)]">
+
+                        {{-- Refined Bag Icon --}}
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5 text-neutral-800 transition-colors group-hover:text-[#D4AF37]"
+                            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                        </svg>
+
+                        {{-- Premium Badge --}}
+                        <span data-cart-count
+                            class="absolute -top-1.5 -right-1.5 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#D4AF37] px-1 text-[9px] font-black uppercase tracking-tighter text-black ring-2 ring-white transition-transform group-hover:scale-110">
                             {{ auth()->user()?->cart?->items?->count() ?? 0 }}
                         </span>
                     </a>
