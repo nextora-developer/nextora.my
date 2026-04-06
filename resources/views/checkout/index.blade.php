@@ -525,7 +525,7 @@
                                                     </div>
                                                 @endif
 
-                                                 @if ($isHitpay)
+                                                @if ($isHitpay)
                                                     <div class="hidden sm:flex items-center gap-1 opacity-70">
                                                         <div
                                                             class="px-2 py-1 rounded bg-white border border-gray-100 text-[10px] font-bold text-blue-800">
@@ -723,6 +723,106 @@
                                                                     <img src="/images/payments/mae.png"
                                                                         class="h-7">
                                                                     <img src="/images/payments/mcash.png"
+                                                                        class="h-7">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="flex gap-4">
+                                                            <span
+                                                                class="flex-shrink-0 w-6 h-6 rounded-full bg-[#D4AF37] text-white text-xs font-bold flex items-center justify-center">
+                                                                2
+                                                            </span>
+
+                                                            <div class="flex-1">
+                                                                <div
+                                                                    class="rounded-xl border border-red-200 bg-red-50 px-4 py-3">
+                                                                    <div class="flex items-start gap-3">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            class="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0"
+                                                                            fill="none" viewBox="0 0 24 24"
+                                                                            stroke-width="2" stroke="currentColor">
+                                                                            <path stroke-linecap="round"
+                                                                                stroke-linejoin="round"
+                                                                                d="M12 9v2m0 4h.01M10.29 3.86l-6.88 11.91a1.75 1.75 0 0 0 1.52 2.63h13.74a1.75 1.75 0 0 0 1.52-2.63L13.71 3.86a1.75 1.75 0 0 0-3.42 0Z" />
+                                                                        </svg>
+
+                                                                        <div>
+                                                                            <h4
+                                                                                class="text-base font-black text-red-800 mb-1">
+                                                                                Important payment notice
+                                                                            </h4>
+
+                                                                            <p
+                                                                                class="text-sm text-red-700 leading-relaxed max-w-md">
+                                                                                After completing the payment,
+                                                                                <strong>please do not close or refresh
+                                                                                    this page</strong>.
+                                                                                We are verifying your transaction with
+                                                                                the payment provider.
+                                                                            </p>
+
+                                                                            <p
+                                                                                class="mt-2 text-sm text-red-600 max-w-md">
+                                                                                You will be automatically redirected to
+                                                                                the payment success page once the
+                                                                                verification
+                                                                                is completed.
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                @endif
+
+                                                @if ($isHitpay)
+                                                    <div
+                                                        class="mt-4 md:ml-6 p-5 bg-[#F9FAFB] rounded-2xl border border-gray-200 space-y-4">
+                                                        <div class="flex gap-4">
+                                                            <span
+                                                                class="flex-shrink-0 w-6 h-6 rounded-full bg-[#D4AF37] text-white text-xs font-bold flex items-center justify-center">
+                                                                1
+                                                            </span>
+
+                                                            <div>
+                                                                <h4 class="text-sm font-bold text-gray-900 mb-1">
+                                                                    Pay via Hitpay
+                                                                </h4>
+
+                                                                <p
+                                                                    class="text-xs text-gray-500 leading-relaxed max-w-md">
+                                                                    You will be redirected to secure
+                                                                    payment page to complete
+                                                                    your payment. Supported methods include FPX, cards,
+                                                                    and e-wallets.
+                                                                </p>
+
+                                                                <div
+                                                                    class="mt-3 flex items-center gap-3 flex-wrap opacity-80">
+                                                                    <img src="/images/payments/fpx.png"
+                                                                        class="h-7">
+                                                                    <img src="/images/payments/visa.png"
+                                                                        class="h-7">
+                                                                    <img src="/images/payments/mastercard.png"
+                                                                        class="h-7">
+                                                                    <img src="/images/payments/tng.png"
+                                                                        class="h-7">
+                                                                    <img src="/images/payments/grabpay.png"
+                                                                        class="h-7">
+                                                                    <img src="/images/payments/grabpaylater.png"
+                                                                        class="h-7">
+                                                                    <img src="/images/payments/shopeepay.png"
+                                                                        class="h-7">
+                                                                    <img src="/images/payments/spaylater.png"
+                                                                        class="h-7">
+                                                                    <img src="/images/payments/alipay.png"
+                                                                        class="h-7">
+                                                                    <img src="/images/payments/wechatpay.png"
+                                                                        class="h-7">
+                                                                    <img src="/images/payments/mae.png"
                                                                         class="h-7">
                                                                 </div>
                                                             </div>

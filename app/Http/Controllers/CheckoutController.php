@@ -38,7 +38,7 @@ class CheckoutController extends Controller
         $handlingPercent = max(0, min($handlingPercent, 100));
         $handlingLabel = (string) Setting::get('handling_fee_label', 'Handling Fee');
 
-        $gatewayCodes = ['revenue_monster', 'commercepay']; // 跟 store() 一样
+        $gatewayCodes = ['revenue_monster', 'commercepay', 'hitpay']; // 跟 store() 一样
 
         $user           = auth()->user();
         $defaultAddress = $user?->defaultAddress;
@@ -205,7 +205,7 @@ class CheckoutController extends Controller
 
         $subtotal = (float) $items->sum(fn($i) => $i->unit_price * $i->qty);
 
-        $gatewayCodes = ['revenue_monster', 'commercepay']; // ✅ 你要的 gateway code 放这里
+        $gatewayCodes = ['revenue_monster', 'commercepay', 'hitpay']; // ✅ 你要的 gateway code 放这里
         $isGateway = in_array($paymentMethod->code, $gatewayCodes, true);
 
         $handlingEnabled = (int) Setting::get('handling_fee_enabled', 0) === 1;
@@ -452,7 +452,7 @@ class CheckoutController extends Controller
 
 
         // 7️⃣ 发邮件
-        $isGatewayPayment = in_array($paymentMethod->code, ['revenue_monster', 'commercepay'], true);
+        $isGatewayPayment = in_array($paymentMethod->code, ['revenue_monster', 'commercepay', 'hitpay'], true);
 
         if ($order) {
             Log::info('Checkout order created: ' . $order->order_no);
@@ -497,6 +497,10 @@ class CheckoutController extends Controller
 
         if ($paymentMethod->code === 'commercepay') {
             return redirect()->route('pay.commercepay', $order);
+        }
+
+        if ($paymentMethod->code === 'hitpay') {
+            return redirect()->route('hitpay.pay', $order);
         }
 
 

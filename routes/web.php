@@ -329,11 +329,11 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
 |--------------------------------------------------------------------------
 */
 
-// Route::get('/pay/hitpay/{order}', [HitpayController::class, 'createPayment'])
-//     ->name('hitpay.pay');
+Route::get('/pay/hitpay/{order}', [HitpayController::class, 'createPayment'])
+    ->name('hitpay.pay');
 
-// Route::get('/payment/hitpay/return', [HitpayController::class, 'handleReturn'])
-//     ->name('hitpay.return');
+Route::get('/payment/hitpay/return', [HitpayController::class, 'handleReturn'])
+    ->name('hitpay.return');
 
 /*
 |--------------------------------------------------------------------------

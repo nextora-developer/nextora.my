@@ -15,11 +15,9 @@ class HitpayController extends Controller
 
     public function createPayment(Order $order)
     {
-        // 1) 金额 & 货币
         $amount   = number_format($order->total, 2, '.', '');
-        $currency = config('services.hitpay.currency', 'MYR'); // .env 控制是 SGD / MYR
+        $currency = config('services.hitpay.currency', 'MYR');
 
-        // 2) 组 payload
         $payload = [
             'amount'           => $amount,
             'currency'         => $currency,
@@ -28,19 +26,14 @@ class HitpayController extends Controller
             'email'            => $order->customer_email ?? null,
             'phone'            => $order->customer_phone ?? null,
             'purpose'          => 'Order ' . $order->order_no,
-            'redirect_url'     => route('hitpay.return'),
+            'redirect_url'     => route('hitpay.return', [
+                'reference' => $order->order_no
+            ]),
             'webhook'          => route('hitpay.webhook'),
-            'payment_methods' => [
-                'card',
-                'fpx',
-                'touch_n_go',
-            ],
-
         ];
 
-        $baseUrl = rtrim(config('services.hitpay.url'), '/'); // eg: https://api.hit-pay.com
+        $baseUrl = rtrim(config('services.hitpay.url'), '/');
 
-        // 3) 调 HitPay API
         $response = Http::asForm()
             ->withHeaders([
                 'X-BUSINESS-API-KEY' => config('services.hitpay.api_key'),
@@ -72,44 +65,70 @@ class HitpayController extends Controller
                 ->with('error', 'HitPay response invalid. Please contact support.');
         }
 
-        // 4) 建议：存 payment_request_id，方便 webhook / 对账
+        session(['checkout_order_id' => $order->id]);
+
         $order->update([
             'payment_reference' => $data['id'] ?? null,
         ]);
 
-        // 5) Redirect 到 HitPay Hosted Checkout
         return redirect()->away($checkoutUrl);
     }
 
 
-    /**
-     * 用户付款后浏览器跳回来的页面（redirect_url）
-     */
+
     public function handleReturn(Request $request)
     {
-        // HitPay 可能会用 reference 或 reference_number（视实际回传而定）
-        $reference = $request->query('reference')
-            ?? $request->query('reference_number');
+        Log::info('HITPAY RETURN HIT', [
+            'ip'    => $request->ip(),
+            'query' => $request->query(),
+        ]);
 
+        // ✅ 1) 强制从 query 拿 order_no（你在 redirect_url 自己塞的）
+        $reference = $request->query('reference')
+            ?? $request->query('reference_number')
+            ?? null;
+
+        $order = null;
+
+        // ✅ 2) 有 reference -> 直接找订单（最稳）
         if ($reference) {
             $order = Order::where('order_no', $reference)->first();
+        }
 
-            if ($order) {
-                return redirect()
-                    ->route('account.orders.show', $order)
-                    ->with(
-                        'success',
-                        'We have received your payment result. If the order is still pending, it will be updated automatically once we confirm the payment.'
-                    );
+        // ✅ 3) 没 reference -> 才尝试 session
+        if (! $order) {
+            $sessionOrderId = session('checkout_order_id');
+            if ($sessionOrderId) {
+                $order = Order::find($sessionOrderId);
             }
         }
 
-        return redirect()
-            ->route('account.orders.index')
-            ->with(
-                'success',
-                'We have received your payment result. Please check your orders. If the status is still pending, it will update shortly after payment confirmation.'
-            );
+        // ✅ 4) 兜底：如果 HitPay 有带 payment_request_id / id 之类（看你 log 的 query）
+        if (! $order) {
+            $maybePaymentReqId = $request->query('payment_request_id')
+                ?? $request->query('id')
+                ?? $request->query('payment_id');
+
+            if ($maybePaymentReqId) {
+                $order = Order::where('payment_reference', $maybePaymentReqId)->first();
+            }
+        }
+
+        // ✅ 5) 真的找不到：不要吓用户
+        if (! $order) {
+            return redirect()->route('account.orders.index')
+                ->with('info', 'Your payment is currently being verified. Please try refreshing your order page in a moment.');
+        }
+
+        // ✅ 已 paid -> success
+        if (strtolower((string)$order->status) === 'paid') {
+            session()->forget('checkout_order_id');
+            return redirect()->route('checkout.success', $order);
+        }
+
+        // ✅ 未 paid：等待 webhook 更新
+        return redirect()->route('account.orders.show', $order)
+            ->with('info', 'We are verifying your payment. Please refresh this page shortly to see the updated status.');
     }
 
 
@@ -245,28 +264,35 @@ class HitpayController extends Controller
             'old_status'    => $oldStatus,
         ]);
 
+
         /**
          * 4️⃣ 根据 HitPay status 更新订单
          */
 
-        // ✅ 付款成功
-        if (in_array($status, ['succeeded', 'completed', 'success', 'paid'], true)) {
+        $isSuccess = in_array($status, ['succeeded', 'completed', 'success', 'paid'], true);
+        $isFail    = in_array($status, ['failed', 'cancelled', 'canceled', 'void', 'expired'], true);
+
+        // ✅ A) 成功：永远允许覆盖（包括 failed → paid）
+        if ($isSuccess) {
 
             $alreadyPaid = $order->status === 'paid';
 
             $order->update([
-                'status'         => 'paid',
-                'payment_status' => $statusRaw ?: 'completed',
+                'status'            => 'paid',
+                'payment_status'    => $statusRaw ?: 'completed',
                 'payment_reference' => $payload['payment_id'] ?? $order->payment_reference,
                 'gateway'           => 'hitpay',
+                // 建议：加 paid_at（如果你有这个字段）
+                // 'paid_at'           => $order->paid_at ?? now(),
             ]);
 
-            Log::info('HitPay webhook set order to paid', [
+            Log::info('HitPay webhook set order to paid (override allowed)', [
                 'order_no'     => $order->order_no,
+                'old_status'   => $oldStatus,
                 'already_paid' => $alreadyPaid,
             ]);
 
-            // 只在第一次从非 paid 变成 paid 的时候发 email
+            // 只在第一次从非 paid → paid 发 email
             if (! $alreadyPaid) {
                 try {
                     if ($order->customer_email) {
@@ -284,27 +310,44 @@ class HitpayController extends Controller
                     Log::error('HitPay webhook email failed for ' . $order->order_no . ' : ' . $e->getMessage());
                 }
             }
+
+            return response('OK', 200);
         }
-        // ❌ 付款失败 / 被取消
-        elseif (in_array($status, ['failed', 'cancelled', 'canceled', 'void'], true)) {
+
+        // ❌ B) 失败/取消/过期：绝对不能把 paid 打回 failed
+        if ($isFail) {
+
+            if ($order->status === 'paid') {
+                Log::warning('HitPay webhook FAIL ignored because order already paid', [
+                    'order_no'      => $order->order_no,
+                    'hitpay_status' => $statusRaw,
+                    'old_status'    => $oldStatus,
+                ]);
+
+                return response('OK', 200);
+            }
+
             $order->update([
                 'status'         => 'failed',
                 'payment_status' => $statusRaw ?: 'failed',
-                'gateway'        => $order->gateway ?? 'hitpay',
+                'gateway'        => 'hitpay',
             ]);
 
             Log::info('HitPay webhook marked payment as FAILED', [
                 'order_no'      => $order->order_no,
                 'hitpay_status' => $statusRaw,
+                'old_status'    => $oldStatus,
             ]);
+
+            return response('OK', 200);
         }
-        // 其他状态先只记 log
-        else {
-            Log::info('HitPay webhook unhandled status', [
-                'order_no' => $order->order_no,
-                'status'   => $statusRaw,
-            ]);
-        }
+
+        // 其他状态先只记 log（pending / processing 之类）
+        Log::info('HitPay webhook unhandled status', [
+            'order_no' => $order->order_no,
+            'status'   => $statusRaw,
+            'old_status' => $oldStatus,
+        ]);
 
         return response('OK', 200);
     }
