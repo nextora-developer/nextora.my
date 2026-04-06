@@ -545,7 +545,7 @@
         </section>
 
         <!-- Brand Story / Why Shop With Us -->
-        <section class="py-16 lg:py-24 bg-white border-y border-[#eee2ca]">
+        <section class="py-16 lg:py-24 bg-white border-y border-[#eee2ca] overflow-hidden">
             <div class="max-w-7xl5 mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
 
