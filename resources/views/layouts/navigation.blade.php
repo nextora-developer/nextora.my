@@ -289,17 +289,21 @@
             ========================== --}}
             <div class="flex lg:hidden h-20 items-center justify-between gap-3">
 
-                <div class="flex items-center gap-2">
+                <a href="{{ route('home') }}" class="flex items-center gap-2 group">
+
                     <div class="leading-tight">
                         <div style="font-family: 'Cinzel', serif;"
-                            class="text-2xl font-bold uppercase text-transparent bg-clip-text bg-gradient-to-b from-[#E7C76A] via-[#D4AF37] to-[#9C7414]">
+                            class="text-2xl font-bold uppercase text-transparent bg-clip-text bg-gradient-to-b from-[#E7C76A] via-[#D4AF37] to-[#9C7414]
+                   group-hover:opacity-80 transition">
                             NEXTORA
                         </div>
-                        <div class="text-[10px] tracking-[0.25em] text-neutral-400 uppercase">
+
+                        <div
+                            class="text-[10px] tracking-[0.25em] text-neutral-400 uppercase group-hover:text-neutral-300 transition">
                             Your Vision, Our Creation
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <div class="flex items-center gap-2">
 
